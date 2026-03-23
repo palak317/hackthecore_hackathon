@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishGuard | AI Phishing Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root { --bg: #020617; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: radial-gradient(circle at center, #020617, #000);
+    color: #f8fafc;
+    overflow-x: hidden;
+}
+
+/* 🌌 2050 AURORA (UPGRADED) */
+.aurora {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    filter: blur(120px);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.blob {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    animation: float 25s infinite alternate ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(150px,120px) scale(1.3); }
+}
+
+/* 🧊 LIQUID GLASS */
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+        inset 0 0 30px rgba(255,255,255,0.02),
+        0 20px 80px rgba(0,0,0,0.6);
+    transition: all 0.4s ease;
+}
+
+.glass:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        0 25px 100px rgba(167,139,250,0.2),
+        inset 0 0 40px rgba(255,255,255,0.03);
+}
+
+/* ✨ GLOW TEXT */
+.glow {
+    background: linear-gradient(90deg,#a78bfa,#7dd3fc,#f9a8d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* 🔥 BUTTON UPGRADE */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* 🎯 PRIMARY BUTTON */
+#scanBtn {
+    background: linear-gradient(135deg,#a78bfa,#7dd3fc,#f9a8d4);
+    box-shadow: 0 10px 40px rgba(167,139,250,0.3);
+}
+
+/* 💬 CHAT */
+.bubble-user {
+    background: linear-gradient(135deg,#a78bfa,#7dd3fc);
+    color: white;
+}
+
+.bubble-bot {
+    background: rgba(255,255,255,0.05);
+}
+
+/* ✨ TABLE HOVER */
+tbody tr {
+    transition: 0.3s;
+}
+tbody tr:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+/* 🎯 NAV ACTIVE */
+.tab-active {
+    color: #a78bfa;
+    border-bottom: 2px solid #a78bfa;
+}
+
+/* 🌊 SMOOTH FADE */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body class="min-h-screen">
+    <!-- Original Background Design Reinstated -->
+   <div class="aurora">
+    <div class="blob top-[-10%] left-[-10%]" style="background: radial-gradient(circle,#a78bfa,transparent)"></div>
+    <div class="blob bottom-[-10%] right-[-10%]" style="background: radial-gradient(circle,#7dd3fc,transparent)"></div>
+    <div class="blob top-[30%] left-[40%]" style="background: radial-gradient(circle,#f9a8d4,transparent)"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="p-4 border-b border-white/5 glass sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <i data-lucide="shield-check" class="text-blue-500 w-8 h-8"></i>
+                <div>
+                    <span class="font-bold text-xl tracking-tight block">Cortex AI</span>
+                    <span class="text-[10px] text-blue-400 font-mono uppercase tracking-widest"> </span>
+                </div>
+            </div>
+
+            <div class="flex gap-8 text-sm font-medium">
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="py-2 transition tab-active">Dashboard</button>
+                <button onclick="switchTab('bot')" id="nav-bot" class="py-2 text-slate-400 hover:text-white transition">AI Chatbot</button>
+                <button onclick="switchTab('archive')" id="nav-archive" class="py-2 text-slate-400 hover:text-white transition">Archive</button>
+            </div>
+
+            <div class="flex items-center bg-slate-900/50 rounded-2xl border border-white/10 p-1">
+                <input type="email" id="loginEmail" placeholder="Your Gmail address..." class="bg-transparent border-none text-xs px-4 focus:ring-0 outline-none w-48 text-white">
+                <button onclick="handleLogin()" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
+                    Connect <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 space-y-8">
+
+        <!-- Dashboard Tab -->
+        <div id="tab-dashboard" class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 class="text-4xl font-extrabold tracking-tight">Real-time <span class="text-blue-500">Defense</span></h1>
+                    <p class="text-slate-400">Streaming scan of past 72 hours of activity for technical & semantic threats.</p>
+                </div>
+                <button onclick="runGmailScanStream()" id="scanBtn" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-bold flex items-center gap-3 shadow-xl shadow-blue-600/20 transition-all active:scale-95">
+                    <i data-lucide="scan-search"></i> Run Deep Scan
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass p-6 rounded-[2rem] flex items-center gap-4">
+                    <div class="p-4 bg-blue-500/10 rounded-2xl"><i data-lucide="layers" class="text-blue-500"></i></div>
+                    <div><p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Total Analyzed</p><h3 class="text-2xl font-black" id="stat-total">00</h3></div>
+                </div>
+                <div class="glass p-6 rounded-[2rem] flex items-center gap-4">
+                    <div class="p-4 bg-rose-500/10 rounded-2xl"><i data-lucide="alert-triangle" class="text-rose-500"></i></div>
+                    <div><p class="text-xs text-rose-500 uppercase tracking-widest font-bold">Suspicious</p><h3 class="text-2xl font-black text-rose-500" id="stat-threat">00</h3></div>
+                </div>
+                <div class="glass p-6 rounded-[2rem] flex items-center gap-4">
+                    <div class="p-4 bg-emerald-500/10 rounded-2xl"><i data-lucide="check-circle" class="text-emerald-500"></i></div>
+                    <div><p class="text-xs text-emerald-500 uppercase tracking-widest font-bold">Safe</p><h3 class="text-2xl font-black text-emerald-500" id="stat-safe">00</h3></div>
+                </div>
+            </div>
+
+            <div class="glass rounded-[2.5rem] overflow-hidden">
+                <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="activity" class="text-blue-500"></i> Live Scanning Stream</h2>
+                    <div id="loading" class="hidden flex items-center gap-2 text-xs text-blue-400 animate-pulse">
+                        <i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Analyzing...
+                    </div>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-white/5 text-slate-500 uppercase text-[10px] tracking-widest">
+                            <tr>
+                                <th class="p-5 font-bold">Sender</th>
+                                <th class="p-5 font-bold">Domain / Link</th>
+                                <th class="p-5 font-bold">NLP Tone</th>
+                                <th class="p-5 font-bold">Risk Score</th>
+                                <th class="p-5 text-right font-bold">Verdict</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scanResults" class="divide-y divide-white/5">
+                            <tr><td colspan="5" class="p-12 text-center text-slate-600 italic">No active scan. Start a deep scan to see live results.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Bot Tab -->
+        <div id="tab-bot" class="hidden max-w-3xl mx-auto animate-in zoom-in-95 duration-500">
+            <div class="glass rounded-[2.5rem] flex flex-col h-[650px] shadow-2xl relative overflow-hidden">
+                <div class="p-4 border-b border-white/5 flex items-center gap-3 bg-white/5">
+                    <div class="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-500 shadow-lg"><i data-lucide="bot"></i></div>
+                    <div>
+                        <h2 class="font-bold text-sm">PhishGuard Security Bot</h2>
+                        <p class="text-[9px] text-emerald-500 font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> Active Protection</p>
+                    </div>
+                </div>
+
+                <div id="chatWindow" class="flex-1 overflow-y-auto chat-container custom-scroll p-6">
+                    <div class="bubble bubble-bot">
+                        Namaste!Paste your email and text to get verified.
+                    </div>
+                </div>
+
+                <div id="typing" class="hidden text-[10px] text-blue-400 font-bold px-6 mb-2 italic">AI analyzing message...</div>
+
+                <div class="p-4 border-t border-white/5 bg-slate-900/30">
+                    <div class="flex gap-3 p-1 bg-slate-900 border border-white/10 rounded-2xl">
+                        <input type="text" id="chatInput" onkeypress="if(event.key === 'Enter') sendChatMessage()" placeholder="Message ya link yahan dale..." class="bg-transparent border-none flex-1 px-4 py-3 text-sm focus:ring-0 outline-none text-white placeholder:text-slate-600">
+                        <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 w-11 h-11 flex items-center justify-center rounded-xl transition shadow-lg shadow-blue-600/20"><i data-lucide="send" class="w-5 h-5"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Tab -->
+        <div id="tab-archive" class="hidden space-y-6 animate-in fade-in duration-500">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <h2 class="text-3xl font-bold">Threat Archive</h2>
+                    <p class="text-slate-400 text-sm">Historical database of analyzed messages.</p>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-3">
+                    <!-- Filter 1: Source (Email/SMS) -->
+                    <div class="flex items-center bg-slate-900/80 rounded-xl border border-white/10 px-3 py-2">
+                        <i data-lucide="database" class="w-3 h-3 text-slate-500 mr-2"></i>
+                        <select id="sourceFilter" onchange="refreshHistory()" class="bg-transparent text-[10px] text-white outline-none cursor-pointer font-bold">
+                            <option value="all" class="bg-slate-900">All Sources</option>
+                            <option value="gmail" class="bg-slate-900">Emails Only</option>
+                            <option value="sms_bot" class="bg-slate-900">SMS Only</option>
+                        </select>
+                    </div>
+                    <!-- Filter 2: Verdict (Safe/Suspicious) -->
+                    <div class="flex items-center bg-slate-900/80 rounded-xl border border-white/10 px-3 py-2">
+                        <i data-lucide="filter" class="w-3 h-3 text-slate-500 mr-2"></i>
+                        <select id="verdictFilter" onchange="refreshHistory()" class="bg-transparent text-[10px] text-white outline-none cursor-pointer font-bold">
+                            <option value="all" class="bg-slate-900">All Status</option>
+                            <option value="suspicious" class="bg-slate-900">Suspicious Only</option>
+                            <option value="safe" class="bg-slate-900">Safe Only</option>
+                        </select>
+                    </div>
+                    <button onclick="refreshHistory()" class="bg-white/5 p-2.5 rounded-xl border border-white/5 hover:bg-white/10 transition">
+                        <i data-lucide="refresh-cw" class="w-4 h-4 text-blue-500"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="archiveFeed" class="grid grid-cols-1 gap-4">
+                <!-- Archive cards -->
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        function switchTab(tabId) {
+            document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.add('hidden'));
+            document.querySelectorAll('nav button').forEach(b => b.classList.remove('tab-active', 'text-white'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            document.getElementById('nav-' + tabId).classList.add('tab-active');
+            if(tabId === 'archive') refreshHistory();
+        }
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            if(!email) return alert("Please enter email");
+            window.location.href = `/login?email=${encodeURIComponent(email)}`;
+        }
+
+        // --- Chatbot Logic ---
+        function appendBubble(role, data = null, text = "") {
+            const win = document.getElementById('chatWindow');
+            const div = document.createElement('div');
+            div.className = `bubble bubble-${role}`;
+
+            if (role === 'bot' && data) {
+                // Support both 'results' and 'urls' backend keys for robustness
+                const results = data.results || data.urls || [];
+                const mainResult = results.length > 0 ? results[0] : null;
+                const isSafe = mainResult ? mainResult.verdict === 'Safe' : (data.nlp.verdict === 'SAFE');
+
+                div.innerHTML = `
+                    <div class="font-bold mb-2">Analysis Complete:</div>
+                    <div class="space-y-1 text-xs">
+                        <p><span class="opacity-50">Verdict:</span> <span class="font-black ${isSafe ? 'text-emerald-500' : 'text-rose-500'}">${(mainResult ? mainResult.verdict : data.nlp.verdict).toUpperCase()}</span></p>
+                        ${!isSafe && mainResult ? `<p><span class="opacity-50">Risk Score:</span> <span class="font-black text-rose-500">${mainResult.phish_score || mainResult.probability_score}%</span></p>` : ''}
+                        <p><span class="opacity-50">Observation:</span> ${data.nlp.reason || 'AI suggests this message is ' + (isSafe ? 'safe' : 'malicious')}</p>
+                    </div>
+                `;
+            } else {
+                div.innerText = text;
+            }
+            win.appendChild(div);
+            win.scrollTop = win.scrollHeight;
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const msg = input.value.trim();
+            if(!msg) return;
+
+            appendBubble('user', null, msg);
+            input.value = '';
+            document.getElementById('typing').classList.remove('hidden');
+
+            try {
+                const res = await fetch('/analyze-text', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ content: msg, sender: 'User' })
+                });
+
+                if (!res.ok) throw new Error("Server error");
+
+                const data = await res.json();
+                appendBubble('bot', data);
+            } catch (e) {
+                console.error(e);
+                appendBubble('bot', null, "Analysis failed. Please check if your backend is running.");
+            } finally {
+                document.getElementById('typing').classList.add('hidden');
+            }
+        }
+
+        // --- Stream Logic ---
+        let eventSource = null;
+        async function runGmailScanStream() {
+            const tbody = document.getElementById('scanResults');
+            tbody.innerHTML = '';
+            document.getElementById('loading').classList.remove('hidden');
+
+            if (eventSource) eventSource.close();
+            eventSource = new EventSource('/scan-gmail-stream');
+
+            eventSource.onmessage = function(e) {
+                const item = JSON.parse(e.data);
+                const isSafe = item.verdict === 'Safe';
+                const row = document.createElement('tr');
+                row.className = "animate-in slide-in-from-top-1 duration-300";
+
+                row.innerHTML = `
+                    <td class="p-5 font-bold truncate max-w-[150px]">${item.sender}</td>
+                    <td class="p-5 text-slate-400 font-mono text-[10px] italic">${item.domain_name || 'No Link'}</td>
+                    <td class="p-5"><span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-bold">${item.nlp_label || 'analyzed'}</span></td>
+                    <td class="p-5 font-black ${isSafe ? 'text-slate-600' : 'text-rose-500'}">${isSafe ? '--' : item.phish_score + '%'}</td>
+                    <td class="p-5 text-right"><span class="px-3 py-1 rounded-full text-[10px] font-black ${isSafe ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'}">${item.verdict.toUpperCase()}</span></td>
+                `;
+                tbody.prepend(row);
+                updateStats();
+            };
+            eventSource.onerror = () => { eventSource.close(); document.getElementById('loading').classList.add('hidden'); };
+        }
+
+        // --- Filtering Logic ---
+        async function refreshHistory() {
+            const src = document.getElementById('sourceFilter').value;
+            const vrd = document.getElementById('verdictFilter').value;
+
+            const res = await fetch('/get-history');
+            let data = await res.json();
+
+            // Filtering logic
+            if (src !== 'all') data = data.filter(i => i.source_type === src);
+            if (vrd !== 'all') {
+                if (vrd === 'safe') data = data.filter(i => i.verdict === 'Safe');
+                else data = data.filter(i => i.verdict !== 'Safe');
+            }
+
+            const feed = document.getElementById('archiveFeed');
+            feed.innerHTML = '';
+            data.forEach(item => {
+                const isSafe = item.verdict === 'Safe';
+                const card = document.createElement('div');
+                card.className = `glass p-6 rounded-[2rem] flex flex-col md:flex-row gap-6 relative overflow-hidden group border-l-4 ${isSafe ? 'border-emerald-500' : 'border-rose-500'}`;
+
+                card.innerHTML = `
+                    <div class="flex-1 space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h4 class="font-bold text-lg">${item.sender}</h4>
+                                <p class="text-[10px] text-slate-500 font-mono">${item.timestamp} • via ${item.source_type.toUpperCase()}</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-xl text-[10px] font-black tracking-widest ${isSafe ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'}">${item.verdict.toUpperCase()}</span>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded-2xl text-xs text-slate-400 italic leading-relaxed custom-scroll max-h-24 overflow-y-auto">
+                            "${item.message_text}"
+                        </div>
+                    </div>
+                    ${!isSafe ? `
+                        <div class="md:w-64 flex flex-col justify-center items-end border-l border-white/5 pl-6 gap-2">
+                            <div class="text-[10px] text-slate-500 uppercase font-bold">Threat Metrics</div>
+                            <div class="flex flex-wrap justify-end gap-2">
+                                <span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-mono">Age: ${item.domain_age_days ?? 'N/A'}</span>
+                                <span class="px-2 py-0.5 bg-white/5 rounded text-[10px] font-mono">SSL: ${item.has_ssl ? 'YES' : 'NO'}</span>
+                            </div>
+                            <div class="text-3xl font-black text-rose-500">${item.phish_score}%</div>
+                        </div>
+                    ` : `
+                        <div class="md:w-64 flex items-center justify-end border-l border-white/5 pl-6">
+                            <div class="text-emerald-500/50 text-[10px] font-bold uppercase flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> Verified Safe</div>
+                        </div>
+                    `}
+                `;
+                feed.appendChild(card);
+            });
+            lucide.createIcons();
+            updateStats();
+        }
+
+        async function updateStats() {
+            const res = await fetch('/get-history');
+            const data = await res.json();
+            document.getElementById('stat-total').innerText = data.length.toString().padStart(2, '0');
+            document.getElementById('stat-threat').innerText = data.filter(i => i.verdict !== 'Safe').length.toString().padStart(2, '0');
+            document.getElementById('stat-safe').innerText = data.filter(i => i.verdict === 'Safe').length.toString().padStart(2, '0');
+        }
+
+        window.onload = refreshHistory;
+    </script>
+</body>
+</html>
