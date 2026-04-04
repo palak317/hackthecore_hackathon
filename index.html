@@ -3,18 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhishGuard | AI Phishing Intelligence</title>
+    <title>CortexGuard Ai | AI Phishing Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap');
 
-:root { --bg: #020617; }
+:root {
+    --bg: #050505;
+    --panel: rgba(24,24,27,0.65);
+    --panel-border: rgba(255,255,255,0.08);
+    --muted: #71717a;
+    --text: #fafafa;
+}
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: radial-gradient(circle at center, #020617, #000);
-    color: #f8fafc;
+    background:
+        radial-gradient(circle at top center, rgba(255,255,255,0.04), transparent 30%),
+        radial-gradient(circle at bottom left, rgba(63,63,70,0.35), transparent 35%),
+        #050505;
+    color: var(--text);
     overflow-x: hidden;
 }
 
@@ -43,25 +52,25 @@ body {
 
 /* 🧊 LIQUID GLASS */
 .glass {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(25px);
-    border: 1px solid rgba(255,255,255,0.08);
+    background: var(--panel);
+    backdrop-filter: blur(24px);
+    border: 1px solid var(--panel-border);
     box-shadow:
         inset 0 0 30px rgba(255,255,255,0.02),
-        0 20px 80px rgba(0,0,0,0.6);
+        0 30px 80px rgba(0,0,0,0.55);
     transition: all 0.4s ease;
 }
 
 .glass:hover {
     transform: translateY(-6px);
     box-shadow:
-        0 25px 100px rgba(167,139,250,0.2),
+        0 30px 100px rgba(255,255,255,0.05),
         inset 0 0 40px rgba(255,255,255,0.03);
 }
 
 /* ✨ GLOW TEXT */
 .glow {
-    background: linear-gradient(90deg,#a78bfa,#7dd3fc,#f9a8d4);
+    background: linear-gradient(90deg,#ffffff,#a1a1aa,#ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -76,19 +85,27 @@ button:hover {
 }
 
 /* 🎯 PRIMARY BUTTON */
-#scanBtn {
-    background: linear-gradient(135deg,#a78bfa,#7dd3fc,#f9a8d4);
-    box-shadow: 0 10px 40px rgba(167,139,250,0.3);
+#scanBtn,
+.primary-cta {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 12px 40px rgba(255,255,255,0.12);
+}
+
+#scanBtn:hover,
+.primary-cta:hover {
+    background: #e4e4e7;
 }
 
 /* 💬 CHAT */
 .bubble-user {
-    background: linear-gradient(135deg,#a78bfa,#7dd3fc);
-    color: white;
+    background: linear-gradient(135deg,#ffffff,#d4d4d8);
+    color: #000;
 }
 
 .bubble-bot {
-    background: rgba(255,255,255,0.05);
+    background: rgba(24,24,27,0.88);
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
 /* ✨ TABLE HOVER */
@@ -101,14 +118,161 @@ tbody tr:hover {
 
 /* 🎯 NAV ACTIVE */
 .tab-active {
-    color: #a78bfa;
-    border-bottom: 2px solid #a78bfa;
+    color: #000;
+    background: #fff;
+    border-bottom: 0;
 }
 
 /* 🌊 SMOOTH FADE */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+.orbitron {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.subtle-grid {
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.feature-card {
+    background: rgba(17,17,17,0.65);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2rem;
+    padding: 2rem;
+    transition: all 0.35s ease;
+}
+
+.feature-card:hover {
+    border-color: rgba(255,255,255,0.14);
+    background: rgba(24,24,27,0.85);
+    transform: translateY(-6px);
+}
+
+.home-stat {
+    background: rgba(24,24,27,0.65);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+}
+
+.tab-hero {
+    position: relative;
+    overflow: hidden;
+    border-radius: 2.75rem;
+    padding: 2.25rem;
+    background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 24px 70px rgba(0,0,0,0.32);
+}
+
+.tab-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, rgba(255,255,255,0.06), transparent 35%),
+        radial-gradient(circle at 85% 20%, rgba(255,255,255,0.06), transparent 28%);
+    opacity: 0.8;
+}
+
+.tab-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.tab-kicker {
+    color: #71717a;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.tab-shell {
+    border-radius: 2.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+}
+
+.mini-feature {
+    padding: 1.15rem;
+    border-radius: 1.5rem;
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.07);
+}
+
+.theme-shell {
+    background: linear-gradient(180deg, rgba(10,10,10,0.92), rgba(16,16,18,0.82));
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.headline-reveal {
+    background: linear-gradient(90deg, #fff, #a1a1aa, #fff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmerText 8s linear infinite;
+}
+
+.hero-float {
+    animation: heroFloat 7s ease-in-out infinite;
+}
+
+.panel-rise {
+    animation: panelRise 0.55s ease both;
+}
+
+@keyframes shimmerText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+@keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes panelRise {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.job-tool-card {
+    background: rgba(17,17,17,0.72);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 2rem;
+}
+
+.job-stat {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1.35rem;
+    padding: 1rem;
+}
+
+.about-shell {
+    max-width: 78rem;
+}
+
+.about-hero {
+    background: linear-gradient(135deg, rgba(17,17,17,0.92), rgba(35,35,40,0.78));
+}
+
+.about-section-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 1.5rem;
 }
 </style>
 </head>
@@ -121,25 +285,30 @@ tbody tr:hover {
     </div>
 
     <!-- Navigation -->
-    <nav class="p-4 border-b border-white/5 glass sticky top-0 z-50">
+    <nav class="p-4 border-b border-white/5 glass sticky top-0 z-50 bg-black/80">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-2">
-                <i data-lucide="shield-check" class="text-blue-500 w-8 h-8"></i>
+                <div class="w-9 h-9 rounded-xl bg-white text-black flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.12)]">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
                 <div>
-                    <span class="font-bold text-xl tracking-tight block">Cortex AI</span>
-                    <span class="text-[10px] text-blue-400 font-mono uppercase tracking-widest"> </span>
+                    <span class="font-bold text-xl tracking-tight block orbitron uppercase">Cortex AI</span>
+                    <span class="text-[10px] text-zinc-500 font-mono uppercase tracking-[0.3em]">Threat Intelligence</span>
                 </div>
             </div>
 
-            <div class="flex gap-8 text-sm font-medium">
-                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="py-2 transition tab-active">Dashboard</button>
-                <button onclick="switchTab('bot')" id="nav-bot" class="py-2 text-slate-400 hover:text-white transition">AI Chatbot</button>
-                <button onclick="switchTab('archive')" id="nav-archive" class="py-2 text-slate-400 hover:text-white transition">Archive</button>
+            <div class="flex gap-2 md:gap-4 bg-zinc-900/60 p-1 rounded-2xl border border-white/5 text-sm font-medium">
+                <button onclick="switchTab('home')" id="nav-home" class="px-4 py-2 rounded-xl transition tab-active text-xs uppercase tracking-widest font-bold">Home</button>
+                <button onclick="switchTab('dashboard')" id="nav-dashboard" class="px-4 py-2 rounded-xl text-zinc-500 hover:text-white transition text-xs uppercase tracking-widest font-bold">Gmail</button>
+                <button onclick="switchTab('bot')" id="nav-bot" class="px-4 py-2 rounded-xl text-zinc-500 hover:text-white transition text-xs uppercase tracking-widest font-bold">Chatbot</button>
+                <button onclick="switchTab('job-analyzer')" id="nav-job-analyzer" class="px-4 py-2 rounded-xl text-zinc-500 hover:text-white transition text-xs uppercase tracking-widest font-bold">Job</button>
+                <button onclick="switchTab('archive')" id="nav-archive" class="px-4 py-2 rounded-xl text-zinc-500 hover:text-white transition text-xs uppercase tracking-widest font-bold">Archive</button>
+                <button onclick="switchTab('about')" id="nav-about" class="px-4 py-2 rounded-xl text-zinc-500 hover:text-white transition text-xs uppercase tracking-widest font-bold">About</button>
             </div>
 
-            <div class="flex items-center bg-slate-900/50 rounded-2xl border border-white/10 p-1">
+            <div class="flex items-center bg-zinc-900/80 rounded-2xl border border-white/10 p-1">
                 <input type="email" id="loginEmail" placeholder="Your Gmail address..." class="bg-transparent border-none text-xs px-4 focus:ring-0 outline-none w-48 text-white">
-                <button onclick="handleLogin()" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2">
+                <button id="gmailConnectBtn" onclick="handleLogin()" class="primary-cta px-5 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 uppercase tracking-widest">
                     Connect <i data-lucide="arrow-right" class="w-4 h-4"></i>
                 </button>
             </div>
@@ -148,53 +317,144 @@ tbody tr:hover {
 
     <main class="max-w-7xl mx-auto p-6 space-y-8">
 
-        <!-- Dashboard Tab -->
-        <div id="tab-dashboard" class="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                <div>
-                    <h1 class="text-4xl font-extrabold tracking-tight">Real-time <span class="text-blue-500">Defense</span></h1>
-                    <p class="text-slate-400">Streaming scan of past 72 hours of activity for technical & semantic threats.</p>
+        <!-- Home Tab -->
+        <div id="tab-home" class="space-y-24 animate-in fade-in duration-700">
+            <section class="text-center py-16 relative subtle-grid rounded-[3rem] overflow-hidden">
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.07),transparent_35%)]"></div>
+                <div class="relative z-10 max-w-5xl mx-auto px-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-full mb-8">
+                        <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                        <span class="text-[10px] font-black uppercase tracking-[0.28em] text-zinc-400">Not just detection. We explain why.</span>
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-black tracking-tighter uppercase orbitron leading-[1.05] headline-reveal hero-float">
+                        AI-Powered Multi-Channel <br><span class="text-zinc-600">Phishing Detection System</span>
+                    </h1>
+                    <p class="max-w-3xl mx-auto text-zinc-500 text-lg leading-relaxed mt-8 mb-10">
+                        Detect phishing across emails, attachments, multilingual messages, and impersonation attempts in real-time using NLP, steganography, and explainable intelligence.
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="switchTab('dashboard')" class="primary-cta px-6 py-3 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center gap-3">
+                            Open Gmail Defense <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="switchTab('job-analyzer')" class="px-6 py-3 rounded-2xl font-black uppercase tracking-widest text-xs border border-white/10 bg-zinc-900/70 text-white hover:bg-zinc-800">
+                            Open Job Analyzer
+                        </button>
+                        <button onclick="switchTab('archive')" class="px-6 py-3 rounded-2xl font-black uppercase tracking-widest text-xs border border-white/10 bg-zinc-900/70 text-white hover:bg-zinc-800">
+                            View Archive
+                        </button>
+                    </div>
                 </div>
-                <button onclick="runGmailScanStream()" id="scanBtn" class="bg-blue-600 hover:bg-blue-700 px-8 py-4 rounded-2xl font-bold flex items-center gap-3 shadow-xl shadow-blue-600/20 transition-all active:scale-95">
+            </section>
+
+            <section class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+                <div>
+                    <p class="text-[10px] text-zinc-600 uppercase tracking-[0.5em] font-black mb-4">The Challenge</p>
+                    <h2 class="text-4xl font-black text-white uppercase tracking-tighter orbitron mb-6">Modern Scams are Evolving</h2>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <i data-lucide="alert-circle" class="text-rose-500 shrink-0 w-6 h-6"></i>
+                            <p class="text-zinc-500 text-sm leading-relaxed"><strong class="text-white block mb-1">AI-generated scams:</strong> Attackers craft realistic, contextual messages that bypass basic filters.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="alert-circle" class="text-rose-500 shrink-0 w-6 h-6"></i>
+                            <p class="text-zinc-500 text-sm leading-relaxed"><strong class="text-white block mb-1">Multi-channel attacks:</strong> Threats now jump between email, PDF, image attachments, SMS, and vishing-style impersonation.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <i data-lucide="alert-circle" class="text-rose-500 shrink-0 w-6 h-6"></i>
+                            <p class="text-zinc-500 text-sm leading-relaxed"><strong class="text-white block mb-1">Lack of explainability:</strong> Users need to know why a message is risky, not just whether it looks suspicious.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-shell rounded-[3rem] p-10 text-center relative overflow-hidden">
+                    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.08),transparent_50%)]"></div>
+                    <div class="relative z-10">
+                        <i data-lucide="shield-alert" class="w-20 h-20 mx-auto text-zinc-700 mb-6"></i>
+                        <h3 class="text-white font-black uppercase orbitron tracking-widest text-xl">Systemic Risk</h3>
+                        <p class="text-zinc-500 text-xs mt-4 uppercase tracking-[0.24em]">Manual verification is failing.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="theme-shell rounded-[4rem] p-10 md:p-16 text-center">
+                <div class="max-w-4xl mx-auto">
+                    <p class="text-[10px] text-zinc-600 uppercase tracking-[0.5em] font-black mb-4">Our Innovation</p>
+                    <h2 class="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter orbitron mb-8">Intelligence-Driven Defense</h2>
+                    <p class="text-zinc-500 text-lg leading-relaxed mb-12">
+                        Cortex AI correlates sender behavior, multilingual text, OCR, steganography, URLs, impersonation, and user-targeting signals into one explainable threat view.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="home-stat"><div class="text-3xl font-black text-white font-mono">&lt;250ms</div><div class="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mt-2 font-black">Analysis</div></div>
+                        <div class="home-stat"><div class="text-3xl font-black text-white font-mono">4+</div><div class="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mt-2 font-black">Channels</div></div>
+                        <div class="home-stat"><div class="text-3xl font-black text-white font-mono">100%</div><div class="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mt-2 font-black">Explainable</div></div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="mb-14 text-center">
+                    <p class="text-[10px] text-zinc-600 uppercase tracking-[0.5em] font-black mb-2">Core Capabilities</p>
+                    <h2 class="text-3xl md:text-4xl font-black text-white uppercase tracking-tighter orbitron">The Defense Stack</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="feature-card"><div class="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mb-6"><i data-lucide="globe" class="w-6 h-6"></i></div><h4 class="text-white text-lg font-bold mb-3 uppercase orbitron">Multi-channel detection</h4><p class="text-zinc-500 text-sm leading-relaxed">Monitor Gmail, attachments, and chat-like text flows in one threat pipeline.</p></div>
+                    <div class="feature-card"><div class="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mb-6"><i data-lucide="file-search" class="w-6 h-6"></i></div><h4 class="text-white text-lg font-bold mb-3 uppercase orbitron">Attachment analysis</h4><p class="text-zinc-500 text-sm leading-relaxed">Inspect PDFs, text files, and image attachments with OCR and content extraction.</p></div>
+                    <div class="feature-card"><div class="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mb-6"><i data-lucide="languages" class="w-6 h-6"></i></div><h4 class="text-white text-lg font-bold mb-3 uppercase orbitron">Multilingual support</h4><p class="text-zinc-500 text-sm leading-relaxed">Translate Hindi, Marathi, and other non-English messages before scoring.</p></div>
+                    <div class="feature-card"><div class="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mb-6"><i data-lucide="target" class="w-6 h-6"></i></div><h4 class="text-white text-lg font-bold mb-3 uppercase orbitron">Impersonation detection</h4><p class="text-zinc-500 text-sm leading-relaxed">Catch fake brand, bank, support, and authority role claims in real time.</p></div>
+                    <div class="feature-card"><div class="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mb-6"><i data-lucide="monitor" class="w-6 h-6"></i></div><h4 class="text-white text-lg font-bold mb-3 uppercase orbitron">URL intelligence</h4><p class="text-zinc-500 text-sm leading-relaxed">Safely preview pages, analyze domains, and detect credential-harvesting signals.</p></div>
+                    <div class="feature-card"><div class="w-12 h-12 rounded-2xl bg-zinc-800 border border-zinc-700 flex items-center justify-center mb-6"><i data-lucide="fingerprint" class="w-6 h-6"></i></div><h4 class="text-white text-lg font-bold mb-3 uppercase orbitron">Explainable AI</h4><p class="text-zinc-500 text-sm leading-relaxed">Show exactly why a message was flagged, with evidence, metrics, and risk context.</p></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Dashboard Tab -->
+        <div id="tab-dashboard" class="hidden space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 panel-rise">
+            <div class="tab-hero flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div>
+                    <p class="tab-kicker mb-3">Gmail Defense</p>
+                    <h1 class="text-4xl font-extrabold tracking-tight orbitron uppercase">Real-time <span class="text-zinc-500">Threat Stream</span></h1>
+                    <p class="text-zinc-500">Streaming scan of the last 72 hours of Gmail activity for semantic, attachment, and impersonation threats.</p>
+                </div>
+                <button onclick="runGmailScanStream()" id="scanBtn" class="primary-cta px-8 py-4 rounded-2xl font-bold flex items-center gap-3 transition-all active:scale-95 uppercase tracking-widest text-xs">
                     <i data-lucide="scan-search"></i> Run Deep Scan
                 </button>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="glass p-6 rounded-[2rem] flex items-center gap-4">
-                    <div class="p-4 bg-blue-500/10 rounded-2xl"><i data-lucide="layers" class="text-blue-500"></i></div>
-                    <div><p class="text-xs text-slate-500 uppercase tracking-widest font-bold">Total Analyzed</p><h3 class="text-2xl font-black" id="stat-total">00</h3></div>
+                <div class="theme-shell p-6 rounded-[2rem] flex items-center gap-4">
+                    <div class="p-4 bg-zinc-800 rounded-2xl border border-zinc-700"><i data-lucide="layers" class="text-white"></i></div>
+                    <div><p class="text-xs text-zinc-500 uppercase tracking-widest font-bold">Total Analyzed</p><h3 class="text-3xl font-mono font-black" id="stat-total">00</h3></div>
                 </div>
-                <div class="glass p-6 rounded-[2rem] flex items-center gap-4">
-                    <div class="p-4 bg-rose-500/10 rounded-2xl"><i data-lucide="alert-triangle" class="text-rose-500"></i></div>
-                    <div><p class="text-xs text-rose-500 uppercase tracking-widest font-bold">Suspicious</p><h3 class="text-2xl font-black text-rose-500" id="stat-threat">00</h3></div>
+                <div class="theme-shell p-6 rounded-[2rem] flex items-center gap-4">
+                    <div class="p-4 bg-zinc-800 rounded-2xl border border-zinc-700"><i data-lucide="alert-triangle" class="text-rose-500"></i></div>
+                    <div><p class="text-xs text-rose-500 uppercase tracking-widest font-bold">Suspicious</p><h3 class="text-3xl font-mono font-black text-rose-500" id="stat-threat">00</h3></div>
                 </div>
-                <div class="glass p-6 rounded-[2rem] flex items-center gap-4">
-                    <div class="p-4 bg-emerald-500/10 rounded-2xl"><i data-lucide="check-circle" class="text-emerald-500"></i></div>
-                    <div><p class="text-xs text-emerald-500 uppercase tracking-widest font-bold">Safe</p><h3 class="text-2xl font-black text-emerald-500" id="stat-safe">00</h3></div>
+                <div class="theme-shell p-6 rounded-[2rem] flex items-center gap-4">
+                    <div class="p-4 bg-zinc-800 rounded-2xl border border-zinc-700"><i data-lucide="check-circle" class="text-emerald-500"></i></div>
+                    <div><p class="text-xs text-emerald-500 uppercase tracking-widest font-bold">Safe</p><h3 class="text-3xl font-mono font-black text-emerald-500" id="stat-safe">00</h3></div>
                 </div>
             </div>
 
-            <div class="glass rounded-[2.5rem] overflow-hidden">
-                <div class="p-6 border-b border-white/5 flex justify-between items-center">
-                    <h2 class="font-bold flex items-center gap-2"><i data-lucide="activity" class="text-blue-500"></i> Live Scanning Stream</h2>
-                    <div id="loading" class="hidden flex items-center gap-2 text-xs text-blue-400 animate-pulse">
+            <div class="theme-shell rounded-[2.5rem] overflow-hidden">
+                <div class="p-6 border-b border-white/5 flex justify-between items-center bg-zinc-950/40">
+                    <h2 class="font-bold flex items-center gap-2 orbitron uppercase tracking-widest text-sm"><i data-lucide="activity" class="text-white"></i> Live Scanning Stream</h2>
+                    <div id="loading" class="hidden flex items-center gap-2 text-xs text-zinc-400 animate-pulse uppercase tracking-widest">
                         <i data-lucide="loader" class="w-4 h-4 animate-spin"></i> Analyzing...
                     </div>
                 </div>
                 <div class="overflow-x-auto">
                     <table class="w-full text-left text-sm">
-                        <thead class="bg-white/5 text-slate-500 uppercase text-[10px] tracking-widest">
+                        <thead class="bg-white/5 text-zinc-500 uppercase text-[10px] tracking-[0.35em]">
                             <tr>
                                 <th class="p-5 font-bold">Sender</th>
-                                <th class="p-5 font-bold">Domain / Link</th>
-                                <th class="p-5 font-bold">NLP Tone</th>
+                                <th class="p-5 font-bold">Message</th>
+                                <th class="p-5 font-bold">File Name</th>
                                 <th class="p-5 font-bold">Risk Score</th>
+                                <th class="p-5 font-bold">Details</th>
                                 <th class="p-5 text-right font-bold">Verdict</th>
                             </tr>
                         </thead>
                         <tbody id="scanResults" class="divide-y divide-white/5">
-                            <tr><td colspan="5" class="p-12 text-center text-slate-600 italic">No active scan. Start a deep scan to see live results.</td></tr>
+                            <tr><td colspan="6" class="p-12 text-center text-slate-600 italic">No active scan. Start a deep scan to see live results.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -202,39 +462,137 @@ tbody tr:hover {
         </div>
 
         <!-- Chat Bot Tab -->
-        <div id="tab-bot" class="hidden max-w-3xl mx-auto animate-in zoom-in-95 duration-500">
-            <div class="glass rounded-[2.5rem] flex flex-col h-[650px] shadow-2xl relative overflow-hidden">
-                <div class="p-4 border-b border-white/5 flex items-center gap-3 bg-white/5">
-                    <div class="w-10 h-10 bg-blue-600/20 rounded-xl flex items-center justify-center text-blue-500 shadow-lg"><i data-lucide="bot"></i></div>
+        <div id="tab-bot" class="hidden max-w-6xl mx-auto space-y-8 animate-in zoom-in-95 duration-500 panel-rise">
+            <div class="tab-hero">
+                <p class="tab-kicker mb-3">AI Chatbot</p>
+                <h2 class="text-4xl font-black orbitron uppercase tracking-tighter">Conversation-Led Threat Triage</h2>
+                <p class="text-zinc-500 mt-4 max-w-3xl">Paste suspicious text, OTP bait, reward scams, payment alerts, or links and get a fast explainable phishing readout in the same visual style as the rest of Cortex AI.</p>
+            </div>
+            <div class="grid grid-cols-1 xl:grid-cols-[1.45fr_0.62fr] gap-5 items-start">
+                <div class="theme-shell rounded-[2.5rem] flex flex-col h-[650px] shadow-2xl relative overflow-hidden feature-float">
+                    <div class="p-5 border-b border-white/5 flex items-center justify-between bg-zinc-950/50">
+                        <div class="flex items-center gap-3">
+                            <div class="w-11 h-11 bg-zinc-800 rounded-xl border border-zinc-700 flex items-center justify-center text-white shadow-lg"><i data-lucide="bot"></i></div>
+                            <div>
+                                <h2 class="font-bold text-sm orbitron uppercase tracking-widest">CortexGuard Security Bot</h2>
+                                <p class="text-[9px] text-emerald-500 font-bold flex items-center gap-1 uppercase tracking-[0.25em]"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> Active Protection</p>
+                            </div>
+                        </div>
+                        <div class="relative" id="toolsDropdownWrapper">
+                            <button onclick="toggleToolsDropdown()" class="flex items-center gap-2 px-4 py-2 bg-zinc-900 hover:bg-zinc-800 border border-white/10 rounded-xl text-xs font-bold text-zinc-200 transition uppercase tracking-widest">
+                                <i data-lucide="wrench" class="w-3.5 h-3.5 text-fuchsia-400"></i> Tools <i data-lucide="chevron-down" class="w-3 h-3"></i>
+                            </button>
+                            <div id="toolsDropdown" class="hidden absolute right-0 mt-2 w-72 bg-zinc-950 border border-white/10 rounded-2xl shadow-2xl z-50 overflow-hidden">
+                                <div class="p-1">
+                                    <button onclick="openMCIE()" class="w-full flex items-start gap-3 px-4 py-3 hover:bg-white/5 rounded-xl transition text-left group">
+                                        <div class="mt-0.5 w-8 h-8 bg-fuchsia-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="radio" class="w-4 h-4 text-fuchsia-400"></i></div>
+                                        <div><p class="text-xs font-bold text-white group-hover:text-fuchsia-400 transition">Multi-Channel Intelligence Engine</p><p class="text-[10px] text-zinc-500 mt-0.5">Analyze call recordings, SMS, and URLs together</p></div>
+                                    </button>
+                                    <button onclick="openWebAnalyzer()" class="w-full flex items-start gap-3 px-4 py-3 hover:bg-white/5 rounded-xl transition text-left group">
+                                        <div class="mt-0.5 w-8 h-8 bg-sky-500/10 rounded-lg flex items-center justify-center flex-shrink-0"><i data-lucide="globe" class="w-4 h-4 text-sky-400"></i></div>
+                                        <div><p class="text-xs font-bold text-white group-hover:text-sky-400 transition">Web Analyzer</p><p class="text-[10px] text-zinc-500 mt-0.5">Inspect lookalike domains, redirects, age, and page content</p></div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="chatWindow" class="flex-1 overflow-y-auto chat-container custom-scroll p-6">
+                        <div class="bubble bubble-bot">
+                            Namaste! Paste any SMS, suspicious message, reward claim, bank alert, payment warning, or phishing link and I will break down the risk, intent, and evidence.
+                        </div>
+                    </div>
+
+                    <div id="typing" class="hidden text-[10px] text-zinc-400 font-bold px-6 mb-2 italic uppercase tracking-widest">AI analyzing message...</div>
+
+                    <div class="p-4 border-t border-white/5 bg-zinc-950/40">
+                        <div class="flex gap-3 p-1 bg-zinc-900 border border-white/10 rounded-2xl">
+                            <input type="text" id="chatInput" onkeypress="if(event.key === 'Enter') sendChatMessage()" placeholder="Paste suspicious message, reward bait, OTP scam, or link..." class="bg-transparent border-none flex-1 px-4 py-3 text-sm focus:ring-0 outline-none text-white placeholder:text-zinc-600">
+                            <button onclick="sendChatMessage()" class="primary-cta w-11 h-11 flex items-center justify-center rounded-xl transition"><i data-lucide="send" class="w-5 h-5"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-shell compact-guide">
                     <div>
-                        <h2 class="font-bold text-sm">PhishGuard Security Bot</h2>
-                        <p class="text-[9px] text-emerald-500 font-bold flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></span> Active Protection</p>
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-[0.3em]">Chatbot Guide</p>
+                        <h3 class="text-[1.55rem] leading-tight font-black mt-2 orbitron uppercase">Fast Scam Triage</h3>
+                        <p class="text-zinc-400 text-sm mt-2 leading-relaxed">Paste an SMS, reward claim, bank alert, payment warning, or suspicious link and get a compact risk summary instantly.</p>
                     </div>
-                </div>
-
-                <div id="chatWindow" class="flex-1 overflow-y-auto chat-container custom-scroll p-6">
-                    <div class="bubble bubble-bot">
-                        Namaste!Paste your email and text to get verified.
-                    </div>
-                </div>
-
-                <div id="typing" class="hidden text-[10px] text-blue-400 font-bold px-6 mb-2 italic">AI analyzing message...</div>
-
-                <div class="p-4 border-t border-white/5 bg-slate-900/30">
-                    <div class="flex gap-3 p-1 bg-slate-900 border border-white/10 rounded-2xl">
-                        <input type="text" id="chatInput" onkeypress="if(event.key === 'Enter') sendChatMessage()" placeholder="Message ya link yahan dale..." class="bg-transparent border-none flex-1 px-4 py-3 text-sm focus:ring-0 outline-none text-white placeholder:text-slate-600">
-                        <button onclick="sendChatMessage()" class="bg-blue-600 hover:bg-blue-500 w-11 h-11 flex items-center justify-center rounded-xl transition shadow-lg shadow-blue-600/20"><i data-lucide="send" class="w-5 h-5"></i></button>
+                    <div class="grid grid-cols-1 gap-2 text-sm mt-5">
+                        <div class="mini-feature">
+                            <p class="font-bold text-white">Output</p>
+                            <p class="text-zinc-400 mt-1">Verdict, probability, language, phishing type, and warning signs.</p>
+                        </div>
+                        <div class="mini-feature">
+                            <p class="font-bold text-white">Best for</p>
+                            <p class="text-zinc-400 mt-1">OTP scams, fake rewards, blocked-account alerts, suspicious PDFs, and malicious links.</p>
+                        </div>
+                        <div class="mini-feature">
+                            <p class="font-bold text-white">Tools</p>
+                            <p class="text-zinc-400 mt-1">Use the top-right Tools menu for multi-channel analysis and website inspection workflows.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Archive Tab -->
-        <div id="tab-archive" class="hidden space-y-6 animate-in fade-in duration-500">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+        <div id="tab-job-analyzer" class="hidden space-y-8 animate-in fade-in duration-500 panel-rise">
+            <div class="tab-hero flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
                 <div>
-                    <h2 class="text-3xl font-bold">Threat Archive</h2>
-                    <p class="text-slate-400 text-sm">Historical database of analyzed messages.</p>
+                    <p class="tab-kicker mb-2">Hiring Safety</p>
+                    <h2 class="text-3xl font-black orbitron uppercase">Job Analyzer</h2>
+                    <p class="text-zinc-400 mt-2 max-w-3xl">Investigate suspicious hiring surfaces from two angles: LinkedIn job posts with supporting web evidence, and Instagram recruiter accounts with public trust signals.</p>
+                </div>
+                <div class="mini-feature text-xs text-zinc-400">
+                    LinkedIn mode checks public web corroboration. Instagram mode uses only publicly visible signals.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                <div class="job-tool-card p-6 space-y-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 flex items-center justify-center"><i data-lucide="briefcase-business" class="w-6 h-6 text-sky-400"></i></div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-[0.35em] text-zinc-500">LinkedIn Job Post</p>
+                            <h3 class="text-2xl font-black mt-2">Real vs Fake Hiring Check</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Paste a LinkedIn job post URL. The analyzer inspects page context, public careers evidence, and common scam patterns before scoring the listing.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <input type="url" id="jobPostUrl" placeholder="https://www.linkedin.com/jobs/view/..." class="w-full bg-zinc-900/60 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-sky-500/50 transition">
+                        <button onclick="runJobPostAnalyzer()" class="w-full py-4 rounded-2xl font-bold text-sm text-white flex items-center justify-center gap-2 transition-all active:scale-95" style="background: linear-gradient(135deg,#0ea5e9,#38bdf8); box-shadow: 0 10px 40px rgba(14,165,233,0.25);"><i data-lucide="search-check" class="w-4 h-4"></i> Analyze LinkedIn Job Post</button>
+                    </div>
+                    <div id="jobPostLoading" class="hidden text-sm text-sky-300 font-semibold">Searching company signals, career evidence, and scam patterns...</div>
+                    <div id="jobPostResult" class="hidden space-y-4 text-sm"></div>
+                </div>
+
+                <div class="job-tool-card p-6 space-y-5">
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-pink-500/10 flex items-center justify-center"><i data-lucide="instagram" class="w-6 h-6 text-pink-400"></i></div>
+                        <div>
+                            <p class="text-[10px] uppercase tracking-[0.35em] text-zinc-500">Instagram Account</p>
+                            <h3 class="text-2xl font-black mt-2">Recruiter Account Trust Scan</h3>
+                            <p class="text-zinc-400 text-sm mt-2">Enter an Instagram username like `@brandname`. The analyzer checks visible account age, follower patterns, activity, verification clues, and red flags.</p>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <input type="text" id="instagramUsername" placeholder="@username" class="w-full bg-zinc-900/60 border border-white/10 rounded-2xl px-4 py-3 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-pink-500/50 transition">
+                        <button onclick="runInstagramAnalyzer()" class="w-full py-4 rounded-2xl font-bold text-sm text-white flex items-center justify-center gap-2 transition-all active:scale-95" style="background: linear-gradient(135deg,#ec4899,#f97316); box-shadow: 0 10px 40px rgba(236,72,153,0.22);"><i data-lucide="sparkles" class="w-4 h-4"></i> Analyze Instagram Account</button>
+                    </div>
+                    <div id="instagramLoading" class="hidden text-sm text-pink-300 font-semibold">Checking public profile status, visible activity, and trust signals...</div>
+                    <div id="instagramResult" class="hidden space-y-4 text-sm"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Archive Tab -->
+        <div id="tab-archive" class="hidden space-y-6 animate-in fade-in duration-500 panel-rise">
+            <div class="tab-hero flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div>
+                    <p class="tab-kicker mb-2">Persistent Records</p>
+                    <h2 class="text-3xl font-bold orbitron uppercase">Threat Archive</h2>
+                    <p class="text-zinc-500 text-sm">Historical database of analyzed messages and attachment evidence.</p>
                 </div>
 
                 <div class="flex flex-wrap items-center gap-3">
@@ -243,8 +601,12 @@ tbody tr:hover {
                         <i data-lucide="database" class="w-3 h-3 text-slate-500 mr-2"></i>
                         <select id="sourceFilter" onchange="refreshHistory()" class="bg-transparent text-[10px] text-white outline-none cursor-pointer font-bold">
                             <option value="all" class="bg-slate-900">All Sources</option>
-                            <option value="gmail" class="bg-slate-900">Emails Only</option>
-                            <option value="sms_bot" class="bg-slate-900">SMS Only</option>
+                            <option value="gmail" class="bg-slate-900">Gmail</option>
+                            <option value="chatbot" class="bg-slate-900">Chatbot</option>
+                            <option value="job_post" class="bg-slate-900">Job Posts</option>
+                            <option value="instagram_account" class="bg-slate-900">Instagram</option>
+                            <option value="multichannel" class="bg-slate-900">MCIE</option>
+                            <option value="web_analyzer" class="bg-slate-900">Web Analyzer</option>
                         </select>
                     </div>
                     <!-- Filter 2: Verdict (Safe/Suspicious) -->
@@ -267,23 +629,669 @@ tbody tr:hover {
             </div>
         </div>
 
+        <div id="tab-about" class="hidden space-y-8 animate-in fade-in duration-500 panel-rise">
+            <div class="about-shell mx-auto space-y-6">
+                <div class="tab-hero about-hero p-8 md:p-10">
+                    <div class="max-w-3xl space-y-5">
+                        <div>
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-[0.35em]">About Platform</p>
+                            <h2 class="text-4xl font-black mt-3 leading-tight">CortexGuard Ai Security Intelligence</h2>
+                        </div>
+                        <p class="text-zinc-300 text-lg leading-relaxed">CortexGuard helps users investigate suspicious Gmail messages, scammy texts, fake job posts, risky recruiter profiles, and phishing websites from one explainable interface.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-2 text-sm">
+                            <div class="about-section-card p-4">
+                                <p class="font-bold text-white">Fast analysis</p>
+                                <p class="text-zinc-400 mt-2">Check suspicious content in seconds without switching between separate tools.</p>
+                            </div>
+                            <div class="about-section-card p-4">
+                                <p class="font-bold text-white">Clear explanations</p>
+                                <p class="text-zinc-400 mt-2">See verdict, probability, and the main signals behind every result.</p>
+                            </div>
+                            <div class="about-section-card p-4">
+                                <p class="font-bold text-white">Combined project</p>
+                                <p class="text-zinc-400 mt-2">Uses your friend’s Gmail-first frontend with your chatbot and job-analysis workflows.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="glass rounded-[2.25rem] p-6">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-[0.35em]">Core Modules</p>
+                        <div class="mt-5 space-y-4 text-sm">
+                            <div class="about-section-card p-5">
+                                <p class="font-bold text-white">Gmail Defense</p>
+                                <p class="text-zinc-400 mt-2">Connect Gmail and stream-scan recent messages with live verdicts and saved history.</p>
+                            </div>
+                            <div class="about-section-card p-5">
+                                <p class="font-bold text-white">AI Chatbot</p>
+                                <p class="text-zinc-400 mt-2">Analyze pasted SMS, reward bait, OTP scams, payment alerts, and suspicious links.</p>
+                            </div>
+                            <div class="about-section-card p-5">
+                                <p class="font-bold text-white">Job Analyzer</p>
+                                <p class="text-zinc-400 mt-2">Inspect LinkedIn job posts and Instagram recruiter accounts for scam indicators and trust signals.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass rounded-[2.25rem] p-6">
+                        <p class="text-[10px] text-zinc-500 uppercase tracking-[0.35em]">What You Get</p>
+                        <div class="mt-5 space-y-4 text-sm">
+                            <div class="about-section-card p-5">
+                                <p class="font-bold text-white">Single interface</p>
+                                <p class="text-zinc-400 mt-2">One project instead of two separate app versions.</p>
+                            </div>
+                            <div class="about-section-card p-5">
+                                <p class="font-bold text-white">Shared archive</p>
+                                <p class="text-zinc-400 mt-2">Results from Gmail, chatbot, and job-analysis tools all appear in one history view.</p>
+                            </div>
+                            <div class="about-section-card p-5">
+                                <p class="font-bold text-white">Easy expansion</p>
+                                <p class="text-zinc-400 mt-2">MCIE and Web Analyzer can still be expanded further inside the same UI later.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
+
+    <div id="attachmentModal" class="hidden fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm p-4">
+        <div class="max-w-2xl mx-auto mt-6 glass rounded-[2rem] border border-white/10 overflow-hidden max-h-[88vh] flex flex-col">
+            <div class="flex items-center justify-between p-5 border-b border-white/10">
+                <div>
+                    <div id="attachmentModalLabel" class="text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold">Attachment Analysis</div>
+                    <h3 id="attachmentModalTitle" class="text-lg font-bold mt-1">File details</h3>
+                </div>
+                <button onclick="closeAttachmentModal()" class="text-slate-400 hover:text-white text-sm">Close</button>
+            </div>
+            <div id="attachmentModalBody" class="p-5 space-y-4 text-sm text-slate-200 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <div id="mcieModal" class="hidden fixed inset-0 z-[110] p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
+        <div class="max-w-2xl mx-auto theme-shell rounded-[2.5rem] overflow-hidden mt-6 relative">
+            <div class="p-6 border-b border-white/5 flex items-center justify-between bg-zinc-950/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-fuchsia-500/10 rounded-xl flex items-center justify-center"><i data-lucide="radio" class="w-5 h-5 text-fuchsia-400"></i></div>
+                    <div><h3 class="font-bold text-sm text-white">Multi-Channel Intelligence Engine</h3><p class="text-[10px] text-zinc-500">Fuse call audio + SMS + URL for scam probability</p></div>
+                </div>
+                <button onclick="closeMCIE()" class="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-white/10 transition text-zinc-400"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+            <div class="p-6 space-y-5 overflow-y-auto">
+                <div>
+                    <label class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1.5"><i data-lucide="mic" class="w-3 h-3 text-fuchsia-400"></i> Call Recording <span class="text-rose-500">*</span></label>
+                    <label id="audioDropZone" class="block cursor-pointer rounded-2xl border-2 border-dashed border-white/10 hover:border-fuchsia-500/50 bg-zinc-900/40 hover:bg-fuchsia-500/5 transition-all p-6 text-center group">
+                        <input type="file" id="mcieAudioFile" accept="audio/*" class="hidden" onchange="handleAudioSelect(event)">
+                        <div id="audioDropLabel"><i data-lucide="upload-cloud" class="w-8 h-8 text-zinc-600 group-hover:text-fuchsia-400 mx-auto mb-2 transition"></i><p class="text-xs text-zinc-500 group-hover:text-zinc-300 transition">Click to upload call recording</p><p class="text-[10px] text-zinc-600 mt-1">MP3, WAV, OGG, M4A, AAC supported</p></div>
+                        <div id="audioFileName" class="hidden text-xs text-fuchsia-400 font-bold flex items-center justify-center gap-2"><i data-lucide="file-audio" class="w-4 h-4"></i> <span id="audioFileNameText"></span></div>
+                    </label>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1.5"><i data-lucide="message-square" class="w-3 h-3 text-sky-400"></i> SMS Text <span class="text-zinc-600 font-normal normal-case tracking-normal ml-1">optional</span></label>
+                    <textarea id="mcieSmsText" rows="3" placeholder="Paste the SMS message here..." class="w-full bg-zinc-900/60 border border-white/10 rounded-2xl px-4 py-3 text-xs text-white placeholder:text-zinc-600 focus:outline-none focus:border-fuchsia-500/50 resize-none transition"></textarea>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1.5"><i data-lucide="link" class="w-3 h-3 text-sky-400"></i> URL <span class="text-zinc-600 font-normal normal-case tracking-normal ml-1">optional</span></label>
+                    <input type="url" id="mcieUrl" placeholder="https://suspicious-link.com" class="w-full bg-zinc-900/60 border border-white/10 rounded-2xl px-4 py-3 text-xs text-white placeholder:text-zinc-600 focus:outline-none focus:border-fuchsia-500/50 transition">
+                </div>
+                <button onclick="runMCIE()" class="w-full py-4 rounded-2xl font-bold text-sm text-white flex items-center justify-center gap-2 transition-all active:scale-95" style="background: linear-gradient(135deg,#a855f7,#7dd3fc); box-shadow: 0 10px 40px rgba(168,85,247,0.25);"><i data-lucide="scan-search" class="w-4 h-4"></i> Analyze Now</button>
+            </div>
+            <div id="mcieResult" class="hidden border-t border-white/5 p-6 overflow-y-auto">
+                <div class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-4 flex items-center gap-1.5"><i data-lucide="bar-chart-2" class="w-3 h-3"></i> Scam Probability Score</div>
+                <div class="flex items-center gap-6">
+                    <div class="relative w-24 h-24 flex-shrink-0">
+                        <svg viewBox="0 0 100 100" class="w-full h-full -rotate-90">
+                            <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="10"/>
+                            <circle id="mcieScoreArc" cx="50" cy="50" r="40" fill="none" stroke="#a855f7" stroke-width="10" stroke-linecap="round" stroke-dasharray="251.2" stroke-dashoffset="251.2" style="transition: stroke-dashoffset 1.2s ease, stroke 0.5s ease"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center"><span id="mcieScoreNum" class="text-2xl font-black text-white">0%</span></div>
+                    </div>
+                    <div class="flex-1 space-y-2"><div id="mcieVerdict" class="text-lg font-black"></div><div id="mcieBreakdown" class="space-y-1 text-xs text-zinc-400"></div></div>
+                </div>
+                <div id="mcieSignals" class="mt-4 grid grid-cols-3 gap-2"></div>
+                <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Risk Level</p><p id="mcieRiskLevel" class="font-black text-white">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Confidence</p><p id="mcieConfidence" class="font-black text-white">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Language</p><p id="mcieLanguage" class="font-black text-white">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Translation</p><p id="mcieTranslation" class="font-black text-white">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Tone</p><p id="mcieTone" class="font-black text-white">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4 md:col-span-2"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Intent</p><p id="mcieIntent" class="font-black text-white">-</p><p id="mcieIntentSummary" class="text-zinc-400 mt-2 leading-relaxed">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Keywords</p><div id="mcieKeywords" class="flex flex-wrap gap-2"></div></div>
+                </div>
+                <div class="mt-5 space-y-3 text-xs">
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Extracted Transcript</p><p id="mcieTranscript" class="text-zinc-300 leading-relaxed whitespace-pre-wrap">-</p></div>
+                    <div id="mcieTranslatedWrap" class="hidden bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">English Translation</p><p id="mcieTranslatedTranscript" class="text-zinc-300 leading-relaxed whitespace-pre-wrap">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Indicators</p><div id="mcieIndicators" class="flex flex-wrap gap-2"></div></div>
+                </div>
+            </div>
+            <div id="mcieLoading" class="hidden absolute inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center rounded-[2.5rem]">
+                <div class="text-center space-y-4 p-6">
+                    <div class="relative">
+                        <div class="w-16 h-16 border-3 border-fuchsia-500/30 border-t-fuchsia-500 rounded-full animate-spin mx-auto"></div>
+                        <div class="absolute inset-0 flex items-center justify-center"><i data-lucide="shield" class="w-6 h-6 text-fuchsia-400 animate-pulse"></i></div>
+                    </div>
+                    <div class="space-y-2">
+                        <p id="mcieLoadingText" class="text-sm text-fuchsia-400 font-bold">Initializing security scan...</p>
+                        <div class="flex flex-col items-center gap-1 mt-3">
+                            <div class="loading-step" style="animation-delay: 0s;"><span class="text-xs text-zinc-400">Scanning audio file structure...</span></div>
+                            <div class="loading-step" style="animation-delay: 0.3s;"><span class="text-xs text-zinc-400">Extracting speech patterns...</span></div>
+                            <div class="loading-step" style="animation-delay: 0.6s;"><span class="text-xs text-zinc-400">Transcribing audio content...</span></div>
+                            <div class="loading-step" style="animation-delay: 0.9s;"><span class="text-xs text-zinc-400">Analyzing scam indicators...</span></div>
+                            <div class="loading-step" style="animation-delay: 1.2s;"><span class="text-xs text-zinc-400">Calculating risk probability...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="webAnalyzerModal" class="hidden fixed inset-0 z-[110] p-4 bg-black/70 backdrop-blur-sm overflow-y-auto">
+        <div class="max-w-2xl mx-auto theme-shell rounded-[2.5rem] overflow-hidden mt-6 relative">
+            <div class="p-6 border-b border-white/5 flex items-center justify-between bg-zinc-950/50">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-sky-500/10 rounded-xl flex items-center justify-center"><i data-lucide="globe" class="w-5 h-5 text-sky-400"></i></div>
+                    <div><h3 class="font-bold text-sm text-white">Web Analyzer</h3><p class="text-[10px] text-zinc-500">Check domain lookalikes, redirects, age, hosting, and website content</p></div>
+                </div>
+                <button onclick="closeWebAnalyzer()" class="w-8 h-8 flex items-center justify-center rounded-xl hover:bg-white/10 transition text-zinc-400"><i data-lucide="x" class="w-4 h-4"></i></button>
+            </div>
+            <div class="p-6 space-y-5">
+                <div><label class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2 flex items-center gap-1.5"><i data-lucide="link" class="w-3 h-3 text-sky-400"></i> Website URL</label><input type="url" id="webAnalyzerUrl" placeholder="https://example.com" class="w-full bg-zinc-900/60 border border-white/10 rounded-2xl px-4 py-3 text-xs text-white placeholder:text-zinc-600 focus:outline-none focus:border-sky-500/50 transition"></div>
+                <div class="bg-sky-500/10 border border-sky-400/20 rounded-2xl px-4 py-3 text-[11px] text-sky-100 leading-relaxed">Safe preview mode fetches the page on the server and renders a stripped, non-interactive sandbox copy. Scripts, forms, links, and external media are disabled.</div>
+                <button onclick="runWebAnalyzer()" class="w-full py-4 rounded-2xl font-bold text-sm text-white flex items-center justify-center gap-2 transition-all active:scale-95" style="background: linear-gradient(135deg,#0ea5e9,#22d3ee); box-shadow: 0 10px 40px rgba(14,165,233,0.25);"><i data-lucide="search-check" class="w-4 h-4"></i> Analyze And Safe Preview</button>
+            </div>
+            <div id="webAnalyzerResult" class="hidden border-t border-white/5 p-6 space-y-4 text-xs overflow-y-auto">
+                <div class="flex items-center justify-between gap-4">
+                    <div><p class="text-[10px] text-zinc-500 uppercase tracking-widest">Verdict</p><p id="webVerdict" class="text-2xl font-black text-white">-</p></div>
+                    <div class="text-right"><p class="text-[10px] text-zinc-500 uppercase tracking-widest">Probability</p><p id="webProbability" class="text-2xl font-black text-white">-</p></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Domain</p><p id="webDomain" class="text-zinc-200 break-all">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Brand Match</p><p id="webBrandMatch" class="text-zinc-200">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Domain Age</p><p id="webDomainAge" class="text-zinc-200">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Redirects</p><p id="webRedirects" class="text-zinc-200">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Shortener</p><p id="webShortener" class="text-zinc-200">-</p></div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Free Hosting</p><p id="webHosting" class="text-zinc-200">-</p></div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Redirect Chain</p><p id="webRedirectChain" class="text-zinc-300 break-all whitespace-pre-wrap">-</p></div>
+                <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Flags</p><div id="webFlags" class="flex flex-wrap gap-2"></div></div>
+                <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Website Content Analysis</p><p id="webContentTitle" class="text-white font-semibold mb-2">-</p><p id="webContentSummary" class="text-zinc-300 leading-relaxed">-</p></div>
+                <div class="glass rounded-[1.5rem] p-4 space-y-4 border border-sky-400/10">
+                    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+                        <div>
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Dynamic Sandbox Analysis</p>
+                            <p class="text-zinc-300 leading-relaxed">Headless-browser inspection of redirects, forms, CTA bait, and brand/domain mismatch.</p>
+                        </div>
+                        <div class="flex gap-3 items-center">
+                            <button id="webSandboxRerunBtn" onclick="rerunWebSandbox()" class="px-4 py-2 rounded-xl bg-sky-500/10 text-sky-300 border border-sky-400/20 text-[10px] font-black uppercase tracking-widest hover:bg-sky-500/15 transition">
+                                Re-run Sandbox
+                            </button>
+                            <div class="bg-white/5 rounded-2xl px-4 py-3 min-w-[110px]">
+                                <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Sandbox Score</p>
+                                <p id="webSandboxScore" class="text-xl font-black text-white mt-1">0</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl px-4 py-3 min-w-[110px]">
+                                <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Risk Level</p>
+                                <p id="webSandboxRisk" class="text-xl font-black text-white mt-1">Low</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Sandbox Final URL</p><p id="webSandboxFinalUrl" class="text-zinc-200 break-all">-</p></div>
+                        <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Redirect Chain</p><p id="webSandboxRedirectChain" class="text-zinc-300 break-all whitespace-pre-wrap">-</p></div>
+                        <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Forms Detected</p><div id="webSandboxForms" class="flex flex-wrap gap-2"></div></div>
+                        <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Page Signals</p><div id="webSandboxSignals" class="flex flex-wrap gap-2"></div></div>
+                    </div>
+                    <div class="bg-white/5 rounded-2xl p-4"><p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-2">Behaviors Detected</p><div id="webSandboxBehaviors" class="flex flex-wrap gap-2"></div></div>
+                    <div id="webSandboxScreenshotWrap" class="hidden bg-white/5 rounded-[1.5rem] p-4 space-y-3">
+                        <div class="flex items-center justify-between gap-3">
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest">Sandbox Screenshot</p>
+                            <a id="webSandboxScreenshotLink" href="#" target="_blank" rel="noopener noreferrer" class="text-[10px] uppercase tracking-widest text-sky-300 hover:text-sky-200">Open image</a>
+                        </div>
+                        <img id="webSandboxScreenshot" alt="Sandbox preview screenshot" class="w-full rounded-[1rem] border border-white/10 bg-slate-950 object-cover" />
+                    </div>
+                    <div id="webSandboxErrors" class="text-[11px] text-amber-200 leading-relaxed"></div>
+                </div>
+                <div class="bg-white/5 rounded-[1.5rem] p-4 space-y-3">
+                    <div class="flex items-center justify-between gap-3">
+                        <div>
+                            <p class="text-[10px] text-zinc-500 uppercase tracking-widest mb-1">Sandbox Preview</p>
+                            <p id="webPreviewReason" class="text-zinc-300 leading-relaxed">-</p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 text-[10px] font-bold uppercase tracking-widest">
+                            <span id="webPreviewSuspicious" class="px-2 py-1 rounded-full bg-amber-500/10 text-amber-300">-</span>
+                            <span id="webPreviewLogin" class="px-2 py-1 rounded-full bg-sky-500/10 text-sky-300">-</span>
+                        </div>
+                    </div>
+                    <iframe id="webSafePreviewFrame" sandbox="" referrerpolicy="no-referrer" class="w-full h-[360px] rounded-[1.25rem] border border-white/10 bg-slate-950"></iframe>
+                </div>
+            </div>
+            <div id="webAnalyzerLoading" class="hidden absolute inset-0 bg-black/80 backdrop-blur-md flex items-center justify-center rounded-[2.5rem]">
+                <div class="text-center space-y-4 p-6">
+                    <div class="relative">
+                        <div class="w-16 h-16 border-3 border-sky-500/30 border-t-sky-500 rounded-full animate-spin mx-auto"></div>
+                        <div class="absolute inset-0 flex items-center justify-center"><i data-lucide="globe" class="w-6 h-6 text-sky-400 animate-pulse"></i></div>
+                    </div>
+                    <div class="space-y-2">
+                        <p id="webLoadingText" class="text-sm text-sky-400 font-bold">Initializing web analysis...</p>
+                        <div class="flex flex-col items-center gap-1 mt-3">
+                            <div class="loading-step" style="animation-delay: 0s;"><span class="text-xs text-zinc-400">Resolving domain DNS...</span></div>
+                            <div class="loading-step" style="animation-delay: 0.3s;"><span class="text-xs text-zinc-400">Tracing redirect chain...</span></div>
+                            <div class="loading-step" style="animation-delay: 0.6s;"><span class="text-xs text-zinc-400">Fetching website content...</span></div>
+                            <div class="loading-step" style="animation-delay: 0.9s;"><span class="text-xs text-zinc-400">Running threat checks...</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
         lucide.createIcons();
+        const detailStore = {};
+        let detailCounter = 0;
+        let liveScanItems = [];
+        let gmailConnected = false;
+        let gmailConnectedEmail = '';
+        let eventSource = null;
+        let gmailAutoRefreshTimer = null;
+        let gmailScanInProgress = false;
+        let activeTabId = 'home';
+        let currentThreatModalRecord = null;
+        let currentThreatModalDetailId = null;
+        let currentWebAnalyzerResult = null;
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, ch => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[ch]));
+        }
+
+        function escapeHtmlAttr(value) {
+            return escapeHtml(value);
+        }
+
+        function closeAttachmentModal() {
+            document.getElementById('attachmentModal').classList.add('hidden');
+        }
+
+        function toggleToolsDropdown() {
+            document.getElementById('toolsDropdown')?.classList.toggle('hidden');
+        }
+
+        function closeToolsDropdown() {
+            document.getElementById('toolsDropdown')?.classList.add('hidden');
+        }
+
+        function openMCIE() {
+            closeToolsDropdown();
+            document.getElementById('mcieModal').classList.remove('hidden');
+        }
+
+        function closeMCIE() {
+            document.getElementById('mcieModal').classList.add('hidden');
+        }
+
+        function openWebAnalyzer() {
+            closeToolsDropdown();
+            document.getElementById('webAnalyzerModal').classList.remove('hidden');
+        }
+
+        function closeWebAnalyzer() {
+            document.getElementById('webAnalyzerModal').classList.add('hidden');
+        }
+
+        function openGenericThreatModal(record) {
+            const body = document.getElementById('attachmentModalBody');
+            currentThreatModalRecord = record;
+            document.getElementById('attachmentModalLabel').innerText = 'Message Analysis';
+            const sourceType = String(record.source_type || record.sourceType || 'analysis').replaceAll('_', ' ');
+            const verdict = normalizeVerdictLabel(record.verdict || record.details?.verdict || 'SAFE');
+            const riskScore = Number(record.phish_score ?? record.details?.risk_score ?? 0);
+            const details = record.details || {};
+            const indicators = Array.isArray(details.indicators)
+                ? details.indicators
+                : Array.isArray(record.scam_indicators)
+                ? record.scam_indicators
+                : typeof record.scam_indicators === 'string'
+                ? (() => { try { return JSON.parse(record.scam_indicators); } catch { return []; } })()
+                : [];
+            const reasoning = []
+                .concat(details.reasoning || [])
+                .concat(record.reason || [])
+                .filter(Boolean);
+            const subject = record.subject || '';
+            const messageText = record.message_text || record.message || '';
+            const sandbox = record.sandbox_analysis || {};
+            const geo = details.geo_analysis || record.geo_lookup || {};
+            const attachments = details.attachments || record.attachment_stats || {};
+            const files = attachments.files || [];
+            const website = details.website_preview || {};
+            const detectedUrls = record.detected_urls || details.entities?.urls || [];
+            const entities = details.entities || {};
+            document.getElementById('attachmentModalTitle').innerText = record.file_name || subject || sourceType || 'Threat details';
+            body.innerHTML = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Source</span><span class="font-bold uppercase">${escapeHtml(sourceType)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Verdict</span><span class="font-black ${verdict === 'PHISHING' ? 'text-rose-400' : verdict === 'SUSPICIOUS' ? 'text-amber-300' : 'text-emerald-400'}">${escapeHtml(verdict)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Risk Score</span><span class="font-bold">${escapeHtml(riskScore)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Timestamp</span><span class="font-bold">${escapeHtml(record.timestamp || 'N/A')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3 md:col-span-2"><span class="text-slate-400 block mb-1">Sender</span><span class="font-bold break-all">${escapeHtml(record.sender || 'Unknown')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Sender IP</span><span class="font-bold">${escapeHtml(details.sender_ip || record.sender_ip || geo.sender_ip || 'Not exposed')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Actual Location</span><span class="font-bold">${escapeHtml(geo.actual_server_location || geo.actual_location || 'Unknown')}</span></div>
+                    ${record.detected_url || record.final_url ? `<div class="bg-white/5 rounded-xl p-3 md:col-span-2"><span class="text-slate-400 block mb-1">URL</span><div class="flex flex-col gap-3"><span class="font-bold break-all">${escapeHtml(record.detected_url || record.final_url)}</span><div><button type="button" onclick="rerunCurrentModalSandbox('${escapeHtmlAttr(record.detected_url || record.final_url)}')" class="px-3 py-2 rounded-xl bg-sky-500/10 text-sky-300 border border-sky-400/20 text-[10px] font-black uppercase tracking-widest hover:bg-sky-500/15 transition">Open In Sandbox Preview</button></div></div></div>` : ''}
+                </div>
+                ${subject ? `<div class="bg-white/5 rounded-2xl p-4"><div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Subject</div><div class="text-sm break-words">${escapeHtml(subject)}</div></div>` : ''}
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Message</div>
+                    <div class="text-sm whitespace-pre-wrap break-words">${messageText ? escapeHtml(messageText) : 'No message text available.'}</div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Reasoning</div>
+                    <div class="text-sm space-y-2">${reasoning.length ? reasoning.map(reason => `<div class="rounded-xl bg-black/20 px-3 py-2">${escapeHtml(reason)}</div>`).join('') : escapeHtml(details.reasoning || 'No detailed reasoning available.')}</div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Indicators</div>
+                    <div class="flex flex-wrap gap-2">${renderChips(indicators, 'No major indicators detected')}</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                    <div class="bg-white/5 rounded-xl p-3">
+                        <span class="text-slate-400 block mb-1">Geo / Network</span>
+                        <div class="space-y-1 text-sm">
+                            <div><span class="text-slate-400">Country:</span> ${escapeHtml(geo.country || 'Unknown')}</div>
+                            <div><span class="text-slate-400">Region:</span> ${escapeHtml(geo.region || 'Unknown')}</div>
+                            <div><span class="text-slate-400">City:</span> ${escapeHtml(geo.city || 'Unknown')}</div>
+                            <div><span class="text-slate-400">ISP:</span> ${escapeHtml(geo.isp || 'Unknown')}</div>
+                            <div><span class="text-slate-400">Org:</span> ${escapeHtml(geo.org || 'Unknown')}</div>
+                        </div>
+                    </div>
+                    <div class="bg-white/5 rounded-xl p-3">
+                        <span class="text-slate-400 block mb-1">Attachments / Stats</span>
+                        <div class="space-y-1 text-sm">
+                            <div><span class="text-slate-400">Attachment count:</span> ${escapeHtml(attachments.count ?? record.attachment_count ?? 0)}</div>
+                            <div><span class="text-slate-400">Total size:</span> ${escapeHtml(attachments.total_size ?? details.stats?.attachment_total_size ?? 0)} bytes</div>
+                            <div><span class="text-slate-400">Detected URLs:</span> ${escapeHtml(detectedUrls.length || 0)}</div>
+                            <div><span class="text-slate-400">Emails:</span> ${escapeHtml((entities.emails || []).length || 0)}</div>
+                            <div><span class="text-slate-400">Phones:</span> ${escapeHtml((entities.phones || []).length || 0)}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Attachment Files</div>
+                    <div class="space-y-2 text-sm">${files.length ? files.map(file => `<div class="rounded-xl bg-black/20 px-3 py-2"><span class="font-bold">${escapeHtml(file.file_name || 'unnamed')}</span><span class="text-slate-400"> • ${escapeHtml(file.mime_type || 'unknown')} • ${escapeHtml(file.size || 0)} bytes</span></div>`).join('') : 'No attachments detected in this message.'}</div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Detected URLs</div>
+                    <div class="space-y-2 text-sm">${detectedUrls.length ? detectedUrls.map(url => `<div class="rounded-xl bg-black/20 px-3 py-2 break-all">${escapeHtml(url)}</div>`).join('') : 'No visible URLs extracted from the message snippet.'}</div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Tone</span><span class="font-bold">${escapeHtml(details.tone || record.tone || 'Neutral')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Language</span><span class="font-bold">${escapeHtml(details.language || record.language || 'unknown')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">NLP Label</span><span class="font-bold">${escapeHtml(record.nlp_label || verdict)}</span></div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Safe Website Preview</div>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="text-slate-400">Title:</span> ${escapeHtml(website.title || 'Unavailable')}</div>
+                        <div><span class="text-slate-400">Has Login Form:</span> ${escapeHtml(website.has_login_form ? 'Yes' : 'No')}</div>
+                        <div><span class="text-slate-400">Suspicious:</span> ${escapeHtml(website.suspicious ? 'Yes' : 'No')}</div>
+                        <div><span class="text-slate-400">Reason:</span> ${escapeHtml(website.reason || 'No linked website preview available')}</div>
+                    </div>
+                </div>
+                ${sandbox && Object.keys(sandbox).length ? `
+                    <div class="bg-white/5 rounded-2xl p-4">
+                        <div class="flex items-center justify-between gap-3 mb-2">
+                            <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Dynamic Sandbox Analysis</div>
+                            ${(record.detected_url || record.final_url) ? `<button type="button" onclick="rerunCurrentModalSandbox('${escapeHtmlAttr(record.detected_url || record.final_url)}')" class="px-3 py-2 rounded-xl bg-sky-500/10 text-sky-300 border border-sky-400/20 text-[10px] font-black uppercase tracking-widest hover:bg-sky-500/15 transition">Re-run Sandbox</button>` : ''}
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
+                            <div><span class="text-slate-400">Sandbox Score:</span> ${escapeHtml(sandbox.sandbox_score ?? 0)}%</div>
+                            <div><span class="text-slate-400">Risk Level:</span> ${escapeHtml(sandbox.risk_level || 'Low')}</div>
+                            <div class="md:col-span-2"><span class="text-slate-400">Final URL:</span> ${escapeHtml(sandbox.final_url || 'N/A')}</div>
+                            <div><span class="text-slate-400">Login Form:</span> ${escapeHtml(sandbox.forms_detected?.login_form ? 'Yes' : 'No')}</div>
+                            <div><span class="text-slate-400">OTP Field:</span> ${escapeHtml(sandbox.forms_detected?.otp_field ? 'Yes' : 'No')}</div>
+                            <div class="md:col-span-2"><span class="text-slate-400">Brand Mismatch:</span> ${escapeHtml(sandbox.page_signals?.domain_brand_mismatch ? 'Yes' : 'No')}</div>
+                            <div class="md:col-span-2"><span class="text-slate-400">Redirect Chain:</span> ${escapeHtml((sandbox.redirect_chain || []).join(' -> ') || 'None')}</div>
+                            <div class="md:col-span-2"><span class="text-slate-400">Behaviors:</span> ${escapeHtml((sandbox.behaviors || []).join(' | ') || 'None')}</div>
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+            document.getElementById('attachmentModal').classList.remove('hidden');
+        }
+
+        function openAttachmentModal(details) {
+            const body = document.getElementById('attachmentModalBody');
+            document.getElementById('attachmentModalLabel').innerText = 'Attachment Analysis';
+            document.getElementById('attachmentModalTitle').innerText = details.file_name || 'Attachment';
+            const whyFlagged = Array.isArray(details.reasons) ? details.reasons : [];
+            const entities = details.entities || {};
+            const stats = details.stats || {};
+            const language = details.language || {};
+            const impersonation = details.impersonation || {};
+            const scores = details.scores || {};
+            const reasoning = Array.isArray(details.reasoning) && details.reasoning.length ? details.reasoning : whyFlagged;
+            const geo = details.geo_analysis || {};
+            const targeting = details.targeting_reason || [];
+            const website = details.website_preview || {};
+            const englishText = language.translated_text || details.extracted_text || '';
+            const originalText = language.original_text || details.extracted_text || '';
+            const translationApplied = Boolean(language.translation_applied);
+            body.innerHTML = `
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Verdict</span><span class="font-black ${details.verdict === 'PHISHING' ? 'text-rose-400' : details.verdict === 'SUSPICIOUS' ? 'text-amber-300' : 'text-emerald-400'}">${escapeHtml(details.verdict)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">File Type</span><span class="font-bold">${escapeHtml(details.type)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Risk Score</span><span class="font-bold">${escapeHtml(details.risk_score)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Confidence</span><span class="font-bold">${escapeHtml(details.confidence_score || details.risk_score)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Phishing Type</span><span class="font-bold">${escapeHtml(details.phishing_type || 'unknown')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Text Score</span><span class="font-bold">${escapeHtml(details.text_phishing_score)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">URL Score</span><span class="font-bold">${escapeHtml(details.url_score || 0)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Steg Score</span><span class="font-bold">${escapeHtml(details.steg_risk_score)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Suspicion Level</span><span class="font-bold">${escapeHtml(details.suspicion_level || 'LOW')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Language</span><span class="font-bold">${escapeHtml(language.detected || 'en')}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Impersonation</span><span class="font-bold">${escapeHtml(impersonation.detected ? `${impersonation.type || 'unknown'}: ${impersonation.details || 'detected'}` : 'Not detected')}</span></div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">2-Line Summary</div>
+                    <div class="text-sm whitespace-pre-wrap break-words">${details.summary ? escapeHtml(details.summary) : 'No summary available.'}</div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Reasoning</div>
+                    <div class="text-sm space-y-2">${reasoning.length ? reasoning.map(reason => `<div class="rounded-xl bg-black/20 px-3 py-2">${escapeHtml(reason)}</div>`).join('') : 'No suspicious indicators detected.'}</div>
+                </div>
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">URLs Found</span><span class="font-bold">${escapeHtml(stats.url_count || 0)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Keyword Matches</span><span class="font-bold">${escapeHtml(stats.keyword_matches || 0)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Suspicious Phrases</span><span class="font-bold">${escapeHtml(stats.suspicious_phrases || 0)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Keyword Density</span><span class="font-bold">${escapeHtml(details.keyword_density || 0)}%</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Text / URL / Steg</span><span class="font-bold">${escapeHtml(scores.text || 0)} / ${escapeHtml(scores.url || 0)} / ${escapeHtml(scores.steg || 0)}</span></div>
+                    <div class="bg-white/5 rounded-xl p-3"><span class="text-slate-400 block mb-1">Impersonation Score</span><span class="font-bold">${escapeHtml(scores.impersonation || 0)}%</span></div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Detected Entities</div>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="text-slate-400">URLs:</span> ${escapeHtml((entities.urls || []).join(', ') || 'None')}</div>
+                        <div><span class="text-slate-400">Emails:</span> ${escapeHtml((entities.emails || []).join(', ') || 'None')}</div>
+                        <div><span class="text-slate-400">Phones:</span> ${escapeHtml((entities.phones || []).join(', ') || 'None')}</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Brand / Role Impersonation</div>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="text-slate-400">Detected:</span> ${escapeHtml(impersonation.detected ? 'Yes' : 'No')}</div>
+                        <div><span class="text-slate-400">Type:</span> ${escapeHtml(impersonation.type || 'none')}</div>
+                        <div><span class="text-slate-400">Details:</span> ${escapeHtml(impersonation.details || 'None')}</div>
+                        <div><span class="text-slate-400">Brand:</span> ${escapeHtml(impersonation.brand || 'None')}</div>
+                        <div><span class="text-slate-400">Actual Domain:</span> ${escapeHtml(impersonation.actual_domain || 'Unknown')}</div>
+                        <div><span class="text-slate-400">Expected Domain:</span> ${escapeHtml(impersonation.expected_domain || 'Unknown')}</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Geo Analysis</div>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="text-slate-400">Claimed Location:</span> ${escapeHtml(geo.claimed_location || 'Unknown')}</div>
+                        <div><span class="text-slate-400">Actual Server Context:</span> ${escapeHtml(geo.actual_server_location || 'Unknown')}</div>
+                        <div><span class="text-slate-400">Mismatch:</span> ${escapeHtml(geo.mismatch ? 'Yes' : 'No')}</div>
+                        <div><span class="text-slate-400">Risk:</span> ${escapeHtml(geo.risk || 'LOW')}</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Reverse Targeting Analysis</div>
+                    <div class="text-sm space-y-2">${targeting.length ? targeting.map(reason => `<div class="rounded-xl bg-black/20 px-3 py-2">${escapeHtml(reason)}</div>`).join('') : 'No strong targeting pattern detected.'}</div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Safe Website Preview</div>
+                    <div class="space-y-2 text-sm">
+                        <div><span class="text-slate-400">Title:</span> ${escapeHtml(website.title || 'Unavailable')}</div>
+                        <div><span class="text-slate-400">Has Login Form:</span> ${escapeHtml(website.has_login_form ? 'Yes' : 'No')}</div>
+                        <div><span class="text-slate-400">Suspicious:</span> ${escapeHtml(website.suspicious ? 'Yes' : 'No')}</div>
+                        <div><span class="text-slate-400">Reason:</span> ${escapeHtml(website.reason || 'No preview')}</div>
+                    </div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">English Analysis Text</div>
+                    <div class="text-sm whitespace-pre-wrap break-words">${englishText ? escapeHtml(englishText) : 'English translation was not available, so only the original text could be shown.'}</div>
+                    <div class="text-xs text-slate-400 mt-3">Translation engine: ${escapeHtml(language.translation_engine || 'unknown')}</div>
+                </div>
+                <div class="bg-white/5 rounded-2xl p-4">
+                    <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400 mb-2">Original Extracted Text</div>
+                    <div class="text-sm whitespace-pre-wrap break-words">${originalText ? escapeHtml(originalText) : 'No text extracted from this file.'}</div>
+                    <div class="text-xs text-slate-400 mt-3">${translationApplied ? 'Translation was applied before phishing scoring.' : 'The original and English analysis text are currently the same.'}</div>
+                </div>
+            `;
+            document.getElementById('attachmentModal').classList.remove('hidden');
+        }
+
+        async function openStoredDetails(detailId) {
+            if (!detailStore[detailId]) return;
+            currentThreatModalDetailId = detailId;
+            const payload = detailStore[detailId];
+            if (payload && payload.__detailType === 'attachment') {
+                openAttachmentModal(payload.data);
+                return;
+            }
+            const record = payload && payload.data ? payload.data : payload;
+            if (record && record.source_type === 'gmail' && record.gmail_message_id && !record.__fullDetailLoaded) {
+                document.getElementById('attachmentModalTitle').innerText = record.subject || 'Loading Gmail details';
+                document.getElementById('attachmentModalBody').innerHTML = '<div class="p-6 text-sm text-zinc-300">Loading latest Gmail details, attachments, geo, and sandbox signals...</div>';
+                document.getElementById('attachmentModal').classList.remove('hidden');
+                try {
+                    const res = await fetch(`/gmail-message-details/${encodeURIComponent(record.gmail_message_id)}`);
+                    const data = await res.json();
+                    if (!res.ok) throw new Error(data.error || 'Failed to load Gmail details');
+                    data.__fullDetailLoaded = true;
+                    detailStore[detailId] = { __detailType: 'generic', data };
+                    openGenericThreatModal(data);
+                    return;
+                } catch (err) {
+                    record.__fullDetailLoaded = true;
+                    record.details = record.details || {};
+                    record.details.reasoning = (record.details.reasoning || []).concat([`Live Gmail detail fetch failed: ${err.message}`]);
+                }
+            }
+            openGenericThreatModal(record);
+        }
+
+        function normalizeVerdictLabel(value) {
+            const verdict = String(value || '').toUpperCase();
+            if (verdict === 'MALICIOUS') return 'PHISHING';
+            if (verdict === 'SAFE' || verdict === 'SUSPICIOUS' || verdict === 'PHISHING') return verdict;
+            return verdict || 'SAFE';
+        }
+
+        function renderChips(items, fallbackText) {
+            if (!items || !items.length) {
+                return `<span class="text-zinc-500">${escapeHtml(fallbackText)}</span>`;
+            }
+            return items.map(item => `<span class="px-2 py-1 rounded-full bg-white/5 text-zinc-200 border border-white/8">${escapeHtml(item)}</span>`).join('');
+        }
 
         function switchTab(tabId) {
+            activeTabId = tabId;
             document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.add('hidden'));
             document.querySelectorAll('nav button').forEach(b => b.classList.remove('tab-active', 'text-white'));
             document.getElementById('tab-' + tabId).classList.remove('hidden');
             document.getElementById('nav-' + tabId).classList.add('tab-active');
+            document.body.setAttribute('data-theme', tabId);
+            closeToolsDropdown();
             if(tabId === 'archive') refreshHistory();
+            if (tabId === 'dashboard') {
+                scheduleGmailAutoRefresh();
+            } else {
+                stopGmailAutoRefresh();
+            }
+        }
+
+        function stopGmailAutoRefresh() {
+            if (gmailAutoRefreshTimer) {
+                clearInterval(gmailAutoRefreshTimer);
+                gmailAutoRefreshTimer = null;
+            }
+        }
+
+        function scheduleGmailAutoRefresh() {
+            stopGmailAutoRefresh();
+            if (!gmailConnected || activeTabId !== 'dashboard') return;
+            gmailAutoRefreshTimer = setInterval(() => {
+                if (activeTabId === 'dashboard' && gmailConnected && !gmailScanInProgress) {
+                    runGmailScanStream(true);
+                }
+            }, 45000);
         }
 
         function handleLogin() {
             const email = document.getElementById('loginEmail').value;
             if(!email) return alert("Please enter email");
             window.location.href = `/login?email=${encodeURIComponent(email)}`;
+        }
+
+        async function loadGmailStatus() {
+            try {
+                const res = await fetch('/gmail-status');
+                const data = await res.json();
+                gmailConnected = Boolean(data.connected);
+                gmailConnectedEmail = data.email || '';
+            } catch (err) {
+                gmailConnected = false;
+                gmailConnectedEmail = '';
+            }
+            updateGmailConnectUi();
+            if (gmailConnected && activeTabId === 'dashboard') {
+                scheduleGmailAutoRefresh();
+            } else if (!gmailConnected) {
+                stopGmailAutoRefresh();
+            }
+        }
+
+        function updateGmailConnectUi() {
+            const input = document.getElementById('loginEmail');
+            const button = document.getElementById('gmailConnectBtn');
+            if (!input || !button) return;
+            if (gmailConnected) {
+                input.value = '';
+                input.classList.add('hidden');
+                input.disabled = true;
+                button.disabled = true;
+                button.classList.remove('primary-cta');
+                button.classList.add('bg-emerald-500', 'text-black');
+                button.innerHTML = 'Gmail Connected';
+                button.title = gmailConnectedEmail || 'Gmail connected';
+            } else {
+                input.classList.remove('hidden');
+                input.disabled = false;
+                input.placeholder = 'Your Gmail address...';
+                button.disabled = false;
+                button.classList.add('primary-cta');
+                button.classList.remove('bg-emerald-500', 'text-black');
+                button.innerHTML = 'Connect <i data-lucide="arrow-right" class="w-4 h-4"></i>';
+                button.removeAttribute('title');
+            }
+            lucide.createIcons();
         }
 
         // --- Chatbot Logic ---
@@ -341,33 +1349,133 @@ tbody tr:hover {
             }
         }
 
-        // --- Stream Logic ---
-        let eventSource = null;
-        async function runGmailScanStream() {
+        async function runGmailScanStream(isAutoRefresh = false) {
+            if (gmailScanInProgress) return;
+            await loadGmailStatus();
+            if (!gmailConnected) {
+                if (!isAutoRefresh) {
+                    alert('Please connect Gmail first.');
+                }
+                switchTab('dashboard');
+                renderStatsFromItems([]);
+                document.getElementById('scanResults').innerHTML = '<tr><td colspan="6" class="p-12 text-center text-slate-600 italic">Connect Gmail first, then run a deep scan for the last 3 days of mail.</td></tr>';
+                return;
+            }
+
+            gmailScanInProgress = true;
             const tbody = document.getElementById('scanResults');
             tbody.innerHTML = '';
+            liveScanItems = [];
+            renderStatsFromItems([]);
             document.getElementById('loading').classList.remove('hidden');
 
-            if (eventSource) eventSource.close();
+            if (eventSource) {
+                eventSource.close();
+            }
+
+            let hasResults = false;
+            let sawTerminalMessage = false;
             eventSource = new EventSource('/scan-gmail-stream');
 
             eventSource.onmessage = function(e) {
                 const item = JSON.parse(e.data);
-                const isSafe = item.verdict === 'Safe';
-                const row = document.createElement('tr');
-                row.className = "animate-in slide-in-from-top-1 duration-300";
 
+                if (item.error) {
+                    sawTerminalMessage = true;
+                    tbody.innerHTML = `<tr><td colspan="6" class="p-12 text-center text-rose-300 italic">${escapeHtml(item.error)}</td></tr>`;
+                    document.getElementById('loading').classList.add('hidden');
+                    gmailScanInProgress = false;
+                    eventSource.close();
+                    return;
+                }
+
+                if (item.status === 'empty') {
+                    sawTerminalMessage = true;
+                    tbody.innerHTML = `<tr><td colspan="6" class="p-12 text-center text-slate-400 italic">${escapeHtml(item.message || 'No Gmail messages found in the last 3 days.')}</td></tr>`;
+                    renderStatsFromItems([]);
+                    document.getElementById('loading').classList.add('hidden');
+                    gmailScanInProgress = false;
+                    eventSource.close();
+                    return;
+                }
+
+                if (item.status === 'done') {
+                    sawTerminalMessage = true;
+                    document.getElementById('loading').classList.add('hidden');
+                    gmailScanInProgress = false;
+                    eventSource.close();
+                    return;
+                }
+
+                hasResults = true;
+                const detailVerdict = (item.details?.verdict || '').toUpperCase();
+                const tableVerdict = String(item.verdict || '').toUpperCase();
+                const normalizedVerdict = detailVerdict || tableVerdict;
+                const isSafe = normalizedVerdict === 'SAFE';
+                const isSuspicious = !isSafe;
+                const verdictLabel = isSafe ? 'SAFE' : 'PHISHING';
+                const riskScore = Number(item.details?.risk_score ?? item.phish_score ?? 0);
+                liveScanItems.unshift({ verdict: verdictLabel });
+                const isAttachment = item.item_kind === 'attachment';
+                const reasons = Array.isArray(item.reasons) ? item.reasons.filter(Boolean).slice(0, 3) : [];
+                const row = document.createElement('tr');
+                row.className = `animate-in slide-in-from-top-1 duration-300 ${isSafe ? 'bg-transparent' : 'bg-rose-500/[0.03]'}`;
+                const messageText = isAttachment
+                    ? (item.subject || item.message_text || 'Attachment analyzed from email')
+                    : (item.message_text || item.subject || item.domain_name || 'No message');
+                const fileName = isAttachment
+                    ? (item.domain_name || 'Unknown file')
+                    : item.attachment_count
+                    ? `${item.attachment_count} attachment(s)`
+                    : '--';
+
+                const detailId = `detail-${++detailCounter}`;
+                detailStore[detailId] = isAttachment
+                    ? { __detailType: 'attachment', data: item.details || {} }
+                    : { __detailType: 'generic', data: item };
                 row.innerHTML = `
-                    <td class="p-5 font-bold truncate max-w-[150px]">${item.sender}</td>
-                    <td class="p-5 text-slate-400 font-mono text-[10px] italic">${item.domain_name || 'No Link'}</td>
-                    <td class="p-5"><span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-bold">${item.nlp_label || 'analyzed'}</span></td>
-                    <td class="p-5 font-black ${isSafe ? 'text-slate-600' : 'text-rose-500'}">${isSafe ? '--' : item.phish_score + '%'}</td>
-                    <td class="p-5 text-right"><span class="px-3 py-1 rounded-full text-[10px] font-black ${isSafe ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'}">${item.verdict.toUpperCase()}</span></td>
-                `;
+                 <td class="p-5 font-bold truncate max-w-[150px] ${isSafe ? 'text-white' : 'text-rose-100'}">${item.sender}</td>
+                 <td class="p-5 text-xs leading-relaxed max-w-[320px] ${isSafe ? 'text-slate-300' : 'text-rose-50'}">
+                     <div class="flex flex-col gap-1">
+                         <span class="break-words">${escapeHtml(messageText)}</span>
+                         ${reasons.length ? `
+                            <div class="flex flex-col gap-1 pt-1">
+                                ${reasons.map(reason => `<span class="text-[11px] text-rose-300 font-semibold">${escapeHtml(reason)}</span>`).join('')}
+                            </div>
+                         ` : ''}
+                     </div>
+                 </td>
+                 <td class="p-5 text-slate-400 font-mono text-[10px] italic max-w-[220px]">
+                     ${isAttachment
+                         ? `<div class="flex flex-col gap-1">
+                               <button class="text-amber-300 font-bold not-italic uppercase text-left hover:text-amber-200 underline underline-offset-4 break-words" onclick="openStoredDetails('${detailId}')">${escapeHtml(fileName)}</button>
+                               <span class="text-slate-500 not-italic">Type: ${escapeHtml(item.attachment_type || 'unknown')}</span>
+                            </div>`
+                         : `<div class="flex flex-col gap-1">
+                               <span>${escapeHtml(fileName)}</span>
+                            </div>`}
+                 </td>
+                 <td class="p-5 font-black ${isSafe ? 'text-emerald-400' : 'text-rose-400'}">${riskScore}%</td>
+                 <td class="p-5">
+                      <button class="px-3 py-1 rounded-full text-[10px] font-black bg-white/5 text-blue-300 hover:bg-white/10 transition" onclick="openStoredDetails('${detailId}')">
+                          View Details
+                     </button>
+                 </td>
+                 <td class="p-5 text-right"><span class="px-3 py-1 rounded-full text-[10px] font-black ${isSafe ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/12 text-rose-400 border border-rose-400/20'}">${verdictLabel}</span></td>
+             `;
                 tbody.prepend(row);
-                updateStats();
+                renderStatsFromItems(liveScanItems);
             };
-            eventSource.onerror = () => { eventSource.close(); document.getElementById('loading').classList.add('hidden'); };
+
+            eventSource.onerror = async function() {
+                eventSource.close();
+                document.getElementById('loading').classList.add('hidden');
+                gmailScanInProgress = false;
+                if (!hasResults && !sawTerminalMessage) {
+                    await loadGmailStatus();
+                    tbody.innerHTML = '<tr><td colspan="6" class="p-12 text-center text-rose-300 italic">Deep scan could not start. Please reconnect Gmail and try again.</td></tr>';
+                }
+            };
         }
 
         // --- Filtering Logic ---
@@ -378,17 +1486,25 @@ tbody tr:hover {
             const res = await fetch('/get-history');
             let data = await res.json();
 
-            // Filtering logic
-            if (src !== 'all') data = data.filter(i => i.source_type === src);
+            if (src !== 'all') {
+                data = data.filter(i => {
+                    if (src === 'chatbot') return ['chatbot', 'sms_bot'].includes(i.source_type);
+                    return i.source_type === src;
+                });
+            }
             if (vrd !== 'all') {
-                if (vrd === 'safe') data = data.filter(i => i.verdict === 'Safe');
-                else data = data.filter(i => i.verdict !== 'Safe');
+                if (vrd === 'safe') data = data.filter(i => normalizeVerdictLabel(i.verdict) === 'SAFE');
+                else data = data.filter(i => normalizeVerdictLabel(i.verdict) !== 'SAFE');
             }
 
             const feed = document.getElementById('archiveFeed');
             feed.innerHTML = '';
             data.forEach(item => {
-                const isSafe = item.verdict === 'Safe';
+                const normalizedVerdict = normalizeVerdictLabel(item.details?.verdict || item.verdict);
+                const isSafe = normalizedVerdict === 'SAFE';
+                const isSuspicious = normalizedVerdict === 'SUSPICIOUS';
+                const archiveDetailId = `archive-detail-${++detailCounter}`;
+                detailStore[archiveDetailId] = { __detailType: 'generic', data: item };
                 const card = document.createElement('div');
                 card.className = `glass p-6 rounded-[2rem] flex flex-col md:flex-row gap-6 relative overflow-hidden group border-l-4 ${isSafe ? 'border-emerald-500' : 'border-rose-500'}`;
 
@@ -399,10 +1515,28 @@ tbody tr:hover {
                                 <h4 class="font-bold text-lg">${item.sender}</h4>
                                 <p class="text-[10px] text-slate-500 font-mono">${item.timestamp} • via ${item.source_type.toUpperCase()}</p>
                             </div>
-                            <span class="px-3 py-1 rounded-xl text-[10px] font-black tracking-widest ${isSafe ? 'bg-emerald-500/10 text-emerald-500' : 'bg-rose-500/10 text-rose-500'}">${item.verdict.toUpperCase()}</span>
+                            <span class="px-3 py-1 rounded-xl text-[10px] font-black tracking-widest ${isSafe ? 'bg-emerald-500/10 text-emerald-500' : isSuspicious ? 'bg-amber-500/10 text-amber-300' : 'bg-rose-500/10 text-rose-500'}">${normalizedVerdict}</span>
                         </div>
+                        ${item.attachment_type ? `
+                            <div class="text-[10px] uppercase tracking-widest text-amber-300 font-bold">
+                                Attachment detected: ${item.domain_name || 'Unknown file'} (${item.attachment_type})
+                            </div>
+                        ` : ''}
                         <div class="bg-slate-900/50 p-4 rounded-2xl text-xs text-slate-400 italic leading-relaxed custom-scroll max-h-24 overflow-y-auto">
                             "${item.message_text}"
+                        </div>
+                        ${item.reasons && item.reasons.length ? `
+                            <div class="text-[11px] text-rose-300">
+                                ${item.reasons.slice(0, 3).join(' | ')}
+                            </div>
+                        ` : ''}
+                        <div>
+                            <button onclick="openStoredDetails('${archiveDetailId}')" class="px-3 py-1 rounded-full text-[10px] font-black bg-white/5 text-blue-300 hover:bg-white/10 transition">
+                                View Details
+                            </button>
+                            ${item.detected_url ? `<button onclick="rerunArchiveSandbox('${archiveDetailId}')" class="ml-2 px-3 py-1 rounded-full text-[10px] font-black bg-sky-500/10 text-sky-300 hover:bg-sky-500/15 transition border border-sky-400/20">
+                                Sandbox Re-check
+                            </button>` : ''}
                         </div>
                     </div>
                     ${!isSafe ? `
@@ -426,15 +1560,479 @@ tbody tr:hover {
             updateStats();
         }
 
-        async function updateStats() {
-            const res = await fetch('/get-history');
-            const data = await res.json();
-            document.getElementById('stat-total').innerText = data.length.toString().padStart(2, '0');
-            document.getElementById('stat-threat').innerText = data.filter(i => i.verdict !== 'Safe').length.toString().padStart(2, '0');
-            document.getElementById('stat-safe').innerText = data.filter(i => i.verdict === 'Safe').length.toString().padStart(2, '0');
+        function formatValue(value, fallback = 'Unknown') {
+            if (value === null || value === undefined || value === '') return fallback;
+            return value;
         }
 
-        window.onload = refreshHistory;
+        function handleAudioSelect(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+            document.getElementById('audioDropLabel').classList.add('hidden');
+            document.getElementById('audioFileName').classList.remove('hidden');
+            document.getElementById('audioFileNameText').textContent = file.name;
+            lucide.createIcons();
+        }
+
+        async function runMCIE() {
+            const audioFile = document.getElementById('mcieAudioFile').files[0];
+            const smsText = document.getElementById('mcieSmsText').value.trim();
+            const url = document.getElementById('mcieUrl').value.trim();
+            if (!audioFile) {
+                alert('Please upload a call recording.');
+                return;
+            }
+            const loading = document.getElementById('mcieLoading');
+            loading.classList.remove('hidden');
+            const fd = new FormData();
+            fd.append('audio', audioFile);
+            if (smsText) fd.append('sms_text', smsText);
+            if (url) fd.append('url', url);
+            try {
+                const loadingTexts = ['Uploading audio file...', 'Transcribing speech...', 'Analyzing content...', 'Calculating risk score...'];
+                let idx = 0;
+                const interval = setInterval(() => {
+                    if (idx < loadingTexts.length) {
+                        document.getElementById('mcieLoadingText').textContent = loadingTexts[idx];
+                        idx++;
+                    }
+                }, 2000);
+                const res = await fetch('/analyze-multichannel', { method: 'POST', body: fd });
+                const data = await res.json();
+                clearInterval(interval);
+                if (!res.ok) throw new Error(data.error || 'Server error');
+                showMCIEResult(data);
+                refreshHistory();
+            } catch (err) {
+                alert('Analysis failed: ' + err.message);
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        async function runWebAnalyzer() {
+            const url = document.getElementById('webAnalyzerUrl').value.trim();
+            if (!url) {
+                alert('Please enter a website URL.');
+                return;
+            }
+            const loading = document.getElementById('webAnalyzerLoading');
+            loading.classList.remove('hidden');
+            try {
+                const loadingTexts = ['Resolving DNS...', 'Fetching website...', 'Checking redirects...', 'Running threat checks...'];
+                let idx = 0;
+                const interval = setInterval(() => {
+                    if (idx < loadingTexts.length) {
+                        document.getElementById('webLoadingText').textContent = loadingTexts[idx];
+                        idx++;
+                    }
+                }, 650);
+                const res = await fetch('/analyze-website', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await res.json();
+                clearInterval(interval);
+                if (!res.ok) throw new Error(data.error || 'Server error');
+                currentWebAnalyzerResult = data;
+                showWebAnalyzerResult(data);
+                refreshHistory();
+            } catch (err) {
+                alert('Web analysis failed: ' + err.message);
+            } finally {
+                loading.classList.add('hidden');
+            }
+        }
+
+        function showWebAnalyzerResult(data) {
+            currentWebAnalyzerResult = data;
+            const verdictEl = document.getElementById('webVerdict');
+            const probabilityEl = document.getElementById('webProbability');
+            const verdict = data.verdict || '-';
+            const color = verdict === 'SAFE' ? '#10b981' : verdict === 'SCAM' ? '#f43f5e' : '#f59e0b';
+            document.getElementById('webAnalyzerResult').classList.remove('hidden');
+            verdictEl.textContent = verdict;
+            verdictEl.style.color = color;
+            probabilityEl.textContent = `${Math.round(data.probability || 0)}%`;
+            probabilityEl.style.color = color;
+            document.getElementById('webDomain').textContent = data.final_url || data.domain || 'N/A';
+            document.getElementById('webBrandMatch').textContent = data.impersonation?.matched_brand ? `${data.impersonation.matched_brand}${data.impersonation.is_impersonating ? ' (lookalike)' : ''}` : 'N/A';
+            document.getElementById('webDomainAge').textContent = data.domain_age_text ? `${data.domain_age_text} (${data.domain_age_flag})` : `N/A (${data.domain_age_flag || 'Unknown'})`;
+            document.getElementById('webRedirects').textContent = `${data.redirect_count || 0} redirect(s)`;
+            document.getElementById('webShortener').textContent = data.shortener_detected ? 'Detected' : 'Not detected';
+            document.getElementById('webHosting').textContent = data.free_hosting_detected ? 'Detected' : 'Not detected';
+            document.getElementById('webRedirectChain').textContent = (data.redirect_chain || []).length ? data.redirect_chain.join(' -> ') : 'N/A - No redirects detected';
+            const flags = data.flags || [];
+            document.getElementById('webFlags').innerHTML = flags.length ? flags.map(flag => `<span class="px-2 py-1 rounded-full bg-rose-500/10 text-rose-300">${escapeHtml(flag)}</span>`).join('') : '<span class="text-zinc-500">No major red flags detected</span>';
+            document.getElementById('webContentTitle').textContent = data.content_title || 'N/A';
+            document.getElementById('webContentSummary').textContent = data.content_analysis ? `${data.content_analysis.reason} Tone: ${data.content_analysis.tone}.` : (data.fetch_error || 'No website content available.');
+            const sandbox = data.sandbox_analysis || {};
+            const sandboxScore = Number(sandbox.sandbox_score || 0);
+            const sandboxRisk = sandbox.risk_level || 'Low';
+            const sandboxColor = sandboxRisk === 'High' ? '#f43f5e' : sandboxRisk === 'Medium' ? '#f59e0b' : '#10b981';
+            document.getElementById('webSandboxScore').textContent = `${sandboxScore}`;
+            document.getElementById('webSandboxScore').style.color = sandboxColor;
+            document.getElementById('webSandboxRisk').textContent = sandboxRisk;
+            document.getElementById('webSandboxRisk').style.color = sandboxColor;
+            document.getElementById('webSandboxFinalUrl').textContent = sandbox.final_url || data.final_url || 'N/A';
+            document.getElementById('webSandboxRedirectChain').textContent = (sandbox.redirect_chain || []).length ? sandbox.redirect_chain.join(' -> ') : 'No redirects observed';
+            const forms = sandbox.forms_detected || {};
+            document.getElementById('webSandboxForms').innerHTML = [
+                `<span class="px-2 py-1 rounded-full ${forms.login_form ? 'bg-rose-500/10 text-rose-300' : 'bg-emerald-500/10 text-emerald-300'}">Login form: ${forms.login_form ? 'Yes' : 'No'}</span>`,
+                `<span class="px-2 py-1 rounded-full ${forms.password_field ? 'bg-rose-500/10 text-rose-300' : 'bg-emerald-500/10 text-emerald-300'}">Password field: ${forms.password_field ? 'Yes' : 'No'}</span>`,
+                `<span class="px-2 py-1 rounded-full ${forms.otp_field ? 'bg-rose-500/10 text-rose-300' : 'bg-emerald-500/10 text-emerald-300'}">OTP field: ${forms.otp_field ? 'Yes' : 'No'}</span>`
+            ].join('');
+            const signals = sandbox.page_signals || {};
+            const brandNames = signals.brand_names || [];
+            const suspiciousCta = signals.suspicious_cta || [];
+            const signalBits = [
+                `<span class="px-2 py-1 rounded-full ${signals.domain_brand_mismatch ? 'bg-rose-500/10 text-rose-300' : 'bg-emerald-500/10 text-emerald-300'}">Brand mismatch: ${signals.domain_brand_mismatch ? 'Yes' : 'No'}</span>`,
+                brandNames.length ? `<span class="px-2 py-1 rounded-full bg-sky-500/10 text-sky-300">Brands: ${escapeHtml(brandNames.join(', '))}</span>` : '<span class="px-2 py-1 rounded-full bg-white/5 text-zinc-400">Brands: none</span>',
+                suspiciousCta.length ? `<span class="px-2 py-1 rounded-full bg-amber-500/10 text-amber-300">CTA: ${escapeHtml(suspiciousCta.join(', '))}</span>` : '<span class="px-2 py-1 rounded-full bg-white/5 text-zinc-400">CTA: none</span>'
+            ];
+            document.getElementById('webSandboxSignals').innerHTML = signalBits.join('');
+            const behaviors = sandbox.behaviors || [];
+            document.getElementById('webSandboxBehaviors').innerHTML = behaviors.length ? behaviors.map(item => `<span class="px-2 py-1 rounded-full bg-fuchsia-500/10 text-fuchsia-200">${escapeHtml(item)}</span>`).join('') : '<span class="text-zinc-500">No suspicious browser behaviors detected</span>';
+            const sandboxErrors = sandbox.errors || [];
+            document.getElementById('webSandboxErrors').textContent = sandboxErrors.length ? `Sandbox notes: ${sandboxErrors.join(' | ')}` : '';
+            const screenshotWrap = document.getElementById('webSandboxScreenshotWrap');
+            const screenshot = document.getElementById('webSandboxScreenshot');
+            const screenshotLink = document.getElementById('webSandboxScreenshotLink');
+            if (sandbox.screenshot_path) {
+                screenshotWrap.classList.remove('hidden');
+                screenshot.src = sandbox.screenshot_path;
+                screenshotLink.href = sandbox.screenshot_path;
+            } else {
+                screenshotWrap.classList.add('hidden');
+                screenshot.removeAttribute('src');
+                screenshotLink.href = '#';
+            }
+            const preview = data.safe_preview || {};
+            document.getElementById('webPreviewReason').textContent = preview.reason || 'Preview unavailable.';
+            document.getElementById('webPreviewSuspicious').textContent = preview.suspicious ? 'Suspicious page cues' : 'No obvious lure';
+            document.getElementById('webPreviewLogin').textContent = preview.has_login_form ? 'Login language found' : 'No login language';
+            document.getElementById('webSafePreviewFrame').srcdoc = preview.html || '<div style="font-family:Segoe UI,Arial,sans-serif;background:#020617;color:#cbd5e1;min-height:100%;padding:24px">Preview unavailable.</div>';
+            lucide.createIcons();
+        }
+
+        async function fetchSandboxAnalysis(url) {
+            const res = await fetch('/analyze-sandbox-url', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url })
+            });
+            const data = await res.json();
+            if (!res.ok) {
+                throw new Error(data.error || 'Sandbox analysis failed');
+            }
+            return data.sandbox_analysis || {};
+        }
+
+        async function rerunWebSandbox() {
+            const url = currentWebAnalyzerResult?.final_url || currentWebAnalyzerResult?.input_url || document.getElementById('webAnalyzerUrl').value.trim();
+            if (!url) {
+                alert('Enter a website URL first.');
+                return;
+            }
+            const button = document.getElementById('webSandboxRerunBtn');
+            const originalLabel = button ? button.textContent : '';
+            if (button) {
+                button.disabled = true;
+                button.textContent = 'Running...';
+            }
+            try {
+                const sandbox = await fetchSandboxAnalysis(url);
+                const updated = {
+                    ...(currentWebAnalyzerResult || { input_url: url, final_url: url }),
+                    sandbox_analysis: sandbox
+                };
+                showWebAnalyzerResult(updated);
+            } catch (err) {
+                alert('Sandbox analysis failed: ' + err.message);
+            } finally {
+                if (button) {
+                    button.disabled = false;
+                    button.textContent = originalLabel || 'Re-run Sandbox';
+                }
+            }
+        }
+
+        async function rerunCurrentModalSandbox(urlOverride = '') {
+            const record = currentThreatModalRecord;
+            const url = urlOverride || record?.detected_url || record?.final_url;
+            if (!url) {
+                alert('No URL found for sandbox preview.');
+                return;
+            }
+            try {
+                const sandbox = await fetchSandboxAnalysis(url);
+                const updatedRecord = {
+                    ...record,
+                    sandbox_analysis: sandbox
+                };
+                currentThreatModalRecord = updatedRecord;
+                if (currentThreatModalDetailId && detailStore[currentThreatModalDetailId]?.data) {
+                    detailStore[currentThreatModalDetailId].data = updatedRecord;
+                }
+                openGenericThreatModal(updatedRecord);
+            } catch (err) {
+                alert('Sandbox analysis failed: ' + err.message);
+            }
+        }
+
+        async function rerunArchiveSandbox(detailId) {
+            const payload = detailStore[detailId];
+            const record = payload?.data || payload;
+            const url = record?.detected_url || record?.final_url;
+            if (!url) {
+                alert('No URL found for sandbox preview.');
+                return;
+            }
+            try {
+                const sandbox = await fetchSandboxAnalysis(url);
+                const updatedRecord = {
+                    ...record,
+                    sandbox_analysis: sandbox
+                };
+                if (payload?.data) {
+                    payload.data = updatedRecord;
+                    detailStore[detailId] = payload;
+                } else {
+                    detailStore[detailId] = updatedRecord;
+                }
+                currentThreatModalRecord = updatedRecord;
+                currentThreatModalDetailId = detailId;
+                openGenericThreatModal(updatedRecord);
+            } catch (err) {
+                alert('Sandbox analysis failed: ' + err.message);
+            }
+        }
+
+        function showMCIEResult(data) {
+            const score = Number(data.scam_probability || 0);
+            const isSafe = score < 70;
+            const color = isSafe ? '#10b981' : '#f43f5e';
+            const label = isSafe ? 'SAFE' : 'SCAM';
+            document.getElementById('mcieResult').classList.remove('hidden');
+            const arc = document.getElementById('mcieScoreArc');
+            arc.style.strokeDashoffset = 251.2 - (score / 100) * 251.2;
+            arc.style.stroke = color;
+            const numEl = document.getElementById('mcieScoreNum');
+            numEl.textContent = score + '%';
+            numEl.style.color = color;
+            const vEl = document.getElementById('mcieVerdict');
+            vEl.textContent = label;
+            vEl.style.color = color;
+            document.getElementById('mcieBreakdown').innerHTML = `<p>${escapeHtml(data.summary || 'Multi-channel signals analyzed.')}</p><p class="text-zinc-500">${escapeHtml(data.recommendation || '')}</p>`;
+            const signals = data.signals || [];
+            document.getElementById('mcieSignals').innerHTML = signals.map(s => `<div class="bg-white/5 rounded-xl p-2 text-center"><p class="text-[9px] text-zinc-500 uppercase tracking-widest">${escapeHtml(s.channel)}</p><p class="text-sm font-black mt-0.5" style="color:${s.score > 50 ? '#f43f5e' : '#10b981'}">${Math.round(s.score || 0)}%</p></div>`).join('');
+            document.getElementById('mcieRiskLevel').textContent = data.risk_level || (score >= 70 ? 'High' : 'Low');
+            document.getElementById('mcieConfidence').textContent = `${Math.max(0, Number(data.confidence_score || score))}%`;
+            document.getElementById('mcieLanguage').textContent = data.language_detected || 'unknown';
+            document.getElementById('mcieTranslation').textContent = data.translation_used ? 'Used' : 'Not used';
+            document.getElementById('mcieTone').textContent = data.tone || data.sentiment_tone || 'Neutral';
+            document.getElementById('mcieIntent').textContent = typeof data.intent === 'string' ? data.intent : (data.intent?.intent || 'Generic social engineering');
+            document.getElementById('mcieIntentSummary').textContent = data.why_targeted || data.intent?.summary || 'The sender is trying to trigger trust, urgency, or fear.';
+            const profile = data.target_profile || {};
+            const profileSummary = profile.summary ? ` ${profile.summary}` : '';
+            document.getElementById('mcieIntentSummary').textContent += profileSummary;
+            const keywords = data.keywords_detected || [];
+            document.getElementById('mcieKeywords').innerHTML = keywords.length ? keywords.map(k => `<span class="px-2 py-1 rounded-full bg-fuchsia-500/10 text-fuchsia-300">${escapeHtml(k)}</span>`).join('') : '<span class="text-zinc-500">No strong keywords</span>';
+            document.getElementById('mcieTranscript').textContent = data.audio_transcript || 'Transcript unavailable';
+            const translatedWrap = document.getElementById('mcieTranslatedWrap');
+            if (data.translated_transcript && data.translation_used) {
+                translatedWrap.classList.remove('hidden');
+                document.getElementById('mcieTranslatedTranscript').textContent = data.translated_transcript;
+            } else {
+                translatedWrap.classList.add('hidden');
+            }
+            const indicators = data.indicators || [];
+            document.getElementById('mcieIndicators').innerHTML = indicators.length ? indicators.map(item => `<span class="px-2 py-1 rounded-full bg-rose-500/10 text-rose-300">${escapeHtml(item)}</span>`).join('') : '<span class="text-zinc-500">No major indicators detected</span>';
+            lucide.createIcons();
+        }
+
+        async function runJobPostAnalyzer() {
+            const url = document.getElementById('jobPostUrl').value.trim();
+            if (!url) {
+                alert('Please enter a LinkedIn job post URL.');
+                return;
+            }
+            const loading = document.getElementById('jobPostLoading');
+            const result = document.getElementById('jobPostResult');
+            loading.classList.remove('hidden');
+            result.classList.add('hidden');
+            try {
+                const res = await fetch('/analyze-job-post', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ url })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Server error');
+                showJobPostResult(data);
+                refreshHistory();
+            } catch (err) {
+                result.classList.remove('hidden');
+                result.innerHTML = `<div class="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-4 text-rose-200">${escapeHtml(err.message)}</div>`;
+            } finally {
+                loading.classList.add('hidden');
+                lucide.createIcons();
+            }
+        }
+
+        function showJobPostResult(data) {
+            const result = document.getElementById('jobPostResult');
+            const verdictColor = data.verdict === 'SAFE' ? 'text-emerald-400' : data.verdict === 'SCAM' ? 'text-rose-400' : 'text-amber-300';
+            const evidence = (data.web_evidence || []).map(item => `
+                <a href="${item.url}" target="_blank" rel="noopener" class="block bg-white/5 rounded-2xl p-4 border border-white/5 hover:border-sky-500/30 transition">
+                    <p class="font-semibold text-white">${escapeHtml(item.title || 'Untitled result')}</p>
+                    <p class="text-zinc-400 text-xs mt-1 break-all">${escapeHtml(item.url || '')}</p>
+                    <p class="text-zinc-300 text-xs mt-2 leading-relaxed">${escapeHtml(item.snippet || 'No snippet available.')}</p>
+                </a>
+            `).join('');
+            result.innerHTML = `
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-500">Verdict</p>
+                        <p class="text-3xl font-black ${verdictColor}">${escapeHtml(data.verdict)}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-500">Risk</p>
+                        <p class="text-3xl font-black ${verdictColor}">${Math.round(data.probability || 0)}%</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Role</p><p class="font-bold text-white">${escapeHtml(formatValue(data.role_title))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Company</p><p class="font-bold text-white">${escapeHtml(formatValue(data.company_name))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Official Results</p><p class="font-bold text-white">${escapeHtml(formatValue(data.stats?.official_results, 0))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Scam Mentions</p><p class="font-bold text-white">${escapeHtml(formatValue(data.stats?.scam_mentions, 0))}</p></div>
+                </div>
+                <div class="job-stat">
+                    <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Page Summary</p>
+                    <p class="text-zinc-300 leading-relaxed">${escapeHtml(formatValue(data.page_summary))}</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="job-stat">
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Why It Looks Suspicious</p>
+                        <div class="flex flex-wrap gap-2">${renderChips(data.red_flags || [], 'No major red flags found')}</div>
+                    </div>
+                    <div class="job-stat">
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Why It Looks Real</p>
+                        <div class="flex flex-wrap gap-2">${renderChips(data.trust_signals || [], 'No strong trust signals found')}</div>
+                    </div>
+                </div>
+                <div class="job-stat">
+                    <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-3">Supporting Web Evidence</p>
+                    <div class="grid grid-cols-1 gap-3">${evidence || '<div class="text-zinc-500">No supporting results were captured.</div>'}</div>
+                </div>`;
+            result.classList.remove('hidden');
+        }
+
+        async function runInstagramAnalyzer() {
+            const username = document.getElementById('instagramUsername').value.trim();
+            if (!username) {
+                alert('Please enter an Instagram username.');
+                return;
+            }
+            const loading = document.getElementById('instagramLoading');
+            const result = document.getElementById('instagramResult');
+            loading.classList.remove('hidden');
+            result.classList.add('hidden');
+            try {
+                const res = await fetch('/analyze-instagram-account', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Server error');
+                showInstagramResult(data);
+                refreshHistory();
+            } catch (err) {
+                result.classList.remove('hidden');
+                result.innerHTML = `<div class="bg-rose-500/10 border border-rose-500/20 rounded-2xl p-4 text-rose-200">${escapeHtml(err.message)}</div>`;
+            } finally {
+                loading.classList.add('hidden');
+                lucide.createIcons();
+            }
+        }
+
+        function showInstagramResult(data) {
+            const result = document.getElementById('instagramResult');
+            const verdictColor = data.verdict === 'SAFE' ? 'text-emerald-400' : data.verdict === 'SCAM' ? 'text-rose-400' : 'text-amber-300';
+            result.innerHTML = `
+                <div class="flex items-start justify-between gap-4">
+                    <div>
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-500">Account</p>
+                        <p class="text-3xl font-black text-white">@${escapeHtml(data.username || '')}</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-500">Risk</p>
+                        <p class="text-3xl font-black ${verdictColor}">${Math.round(data.probability || 0)}%</p>
+                        <p class="text-xs ${verdictColor} font-semibold mt-1">${escapeHtml(data.verdict || 'UNKNOWN')}</p>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Status</p><p class="font-bold text-white">${escapeHtml(formatValue(data.status))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Followers</p><p class="font-bold text-white">${escapeHtml(formatValue(data.followers))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Following</p><p class="font-bold text-white">${escapeHtml(formatValue(data.following))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Posts</p><p class="font-bold text-white">${escapeHtml(formatValue(data.posts))}</p></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Visible Account Age</p><p class="font-bold text-white">${escapeHtml(formatValue(data.age_text))}</p><p class="text-zinc-400 text-xs mt-2">${escapeHtml(formatValue(data.age_basis))}</p></div>
+                    <div class="job-stat"><p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Activity</p><p class="text-zinc-300 leading-relaxed">${escapeHtml(formatValue(data.activity_summary))}</p><p class="text-zinc-400 text-xs mt-2">${data.verified ? 'Account appears verified.' : 'Account is not visibly verified from public HTML.'}</p></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div class="job-stat">
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Risk Signals</p>
+                        <div class="flex flex-wrap gap-2">${renderChips(data.red_flags || [], 'No strong red flags')}</div>
+                    </div>
+                    <div class="job-stat">
+                        <p class="text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">Trust Signals</p>
+                        <div class="flex flex-wrap gap-2">${renderChips(data.trust_signals || [], 'No strong trust signals')}</div>
+                    </div>
+                </div>`;
+            result.classList.remove('hidden');
+        }
+
+        function renderStatsFromItems(items) {
+            const total = items.length;
+            const safe = items.filter(i => normalizeVerdictLabel(i.details?.verdict || i.verdict) === 'SAFE').length;
+            const threat = total - safe;
+            document.getElementById('stat-total').innerText = String(total).padStart(2, '0');
+            document.getElementById('stat-threat').innerText = String(threat).padStart(2, '0');
+            document.getElementById('stat-safe').innerText = String(safe).padStart(2, '0');
+        }
+
+        async function updateStats() {
+            if (liveScanItems.length) {
+                renderStatsFromItems(liveScanItems);
+                return;
+            }
+            renderStatsFromItems([]);
+        }
+
+        window.onload = async function () {
+            const params = new URLSearchParams(window.location.search);
+            const initialTab = params.get('tab') || 'home';
+            await loadGmailStatus();
+            switchTab(initialTab);
+            refreshHistory();
+            updateStats();
+            if (params.get('gmail') === 'connected') {
+                document.getElementById('scanResults').innerHTML = '<tr><td colspan="6" class="p-12 text-center text-emerald-300 italic">Gmail connected. Click "Run Deep Scan" to analyze messages from the last 3 days.</td></tr>';
+            } else if (!gmailConnected) {
+                document.getElementById('scanResults').innerHTML = '<tr><td colspan="6" class="p-12 text-center text-slate-600 italic">Connect Gmail first, then run a deep scan to see live results.</td></tr>';
+            }
+        };
+
+        document.addEventListener('click', function (event) {
+            const wrapper = document.getElementById('toolsDropdownWrapper');
+            if (wrapper && !wrapper.contains(event.target)) {
+                closeToolsDropdown();
+            }
+        });
     </script>
 </body>
 </html>
