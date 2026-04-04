@@ -1,170 +1,230 @@
-# 🧠 CortexGuard AI
+# 🛡️ PhishGuard – AI-Powered Multi-Channel Phishing Detection System
 
-### Adaptive Threat Intelligence Platform
-
-> Real-time AI-powered phishing and scam detection system for emails, messages, and links.
+🚀 **Real-time phishing detection across emails, SMS, calls, URLs, and attachments using AI + sandbox simulation**
 
 ---
 
-## 🚀 Overview
+## 📌 Overview
 
-CortexGuard AI is a **multi-layered security platform** designed to detect phishing, scams, and malicious content using a combination of:
-
-* 🧠 NLP-based semantic analysis
-* 🔗 URL & domain intelligence
-* 🛡️ Protocol and security validation
-* ⚡ Real-time streaming detection
-
-Unlike traditional systems, CortexGuard focuses on **context-aware threat detection** with explainable insights.
+PhishGuard is an intelligent cybersecurity platform designed to detect and explain phishing attacks in real-time. Unlike traditional systems that rely on static rules, PhishGuard uses **AI-driven analysis, sandbox simulation, and multi-channel intelligence** to identify threats before users fall victim.
 
 ---
 
-## ✨ Features
+## 🎯 Key Features
 
-* 🔍 **Real-time Gmail scanning** (last 72 hours)
-* 🤖 **AI Chatbot for message analysis**
-* 🌐 **URL extraction & domain verification**
-* 🧠 **NLP-based scam detection (Hugging Face)**
-* ⚡ **Live scanning stream (SSE)**
-* 📊 **Threat dashboard with analytics**
-* 🗂️ **Archive with filtering (Safe / Suspicious)**
-* 🔐 **OAuth-based Gmail integration**
-* 💡 **Explainable AI output (reason + score)**
+### 🔍 Multi-Channel Detection
+
+* Gmail email scanning (last 72 hours + live stream)
+* SMS and chatbot text analysis
+* Voice call (vishing) detection via speech-to-text
+* URL and website analysis
+* Job & social media scam detection
 
 ---
 
-## 🧠 How It Works
+### 🧠 AI Threat Intelligence
 
-### 🔄 Multi-Layer Detection Pipeline
-
-1. **Data Ingestion**
-
-   * Gmail API fetches recent emails
-   * User input via chatbot
-
-2. **AI Semantic Analysis**
-
-   * Detects intent (urgency, fraud patterns, tone)
-
-3. **URL Extraction**
-
-   * Identifies links using regex
-
-4. **Reputation Check**
-
-   * Matches domain with trusted whitelist
-
-5. **Technical Validation**
-
-   * Domain age (WHOIS)
-   * SSL certificate check
-
-6. **Protocol Validation**
-
-   * HTTP = High Risk
-   * HTTPS = Further analysis
-
-7. **Final Scoring Engine**
-
-   * Combines:
-
-     * Reputation
-     * Protocol
-     * AI confidence
-
-8. **Output**
-
-   * Risk score
-   * Verdict (Safe / Suspicious)
-   * Explanation
+* NLP-based phishing detection
+* Keyword + behavioral analysis
+* Brand & role impersonation detection (e.g., fake bank manager)
+* Multilingual support (Hindi, Marathi, etc.)
 
 ---
 
-## 🏗️ Tech Stack
+### 🌐 Sandbox Simulation Engine (🔥 Unique Feature)
 
-### 🔹 Frontend
+* Safe URL preview without opening in browser
+* Detects:
 
-* HTML + Tailwind CSS
-* Glassmorphism + Aurora UI
-* JavaScript (Vanilla)
-
-### 🔹 Backend
-
-* Flask (Python)
-
-### 🔹 AI / NLP
-
-* Hugging Face Transformers
-* DistilBERT (Phishing Detection)
-
-### 🔹 APIs
-
-* Gmail API (OAuth 2.0)
-* WHOIS / SSL Lookup
-
-### 🔹 Data
-
-* MySQL (threat_history)
+  * Fake login pages
+  * Redirect chains
+  * Suspicious content behavior
+* Prevents user exposure to malicious sites
 
 ---
 
-## 📊 System Architecture
+### 📁 Attachment Analysis
+
+* PDF text extraction
+* Image + steganography detection
+* Executable file risk detection
+* Hidden phishing content detection
+
+---
+
+### 📊 Explainable AI
+
+* Risk score (0–100)
+* Clear reasoning (why flagged)
+* 2-line summary for users
+
+---
+
+### 📲 Real-Time Alerts
+
+* WhatsApp alerts using Twilio API
+* Instant warning for high-risk threats
+
+---
+
+### 🗄️ Threat History
+
+* Stores all analyzed threats
+* Enables re-analysis and tracking
+* Built using SQLite database
+
+---
+
+## 🏗️ System Architecture
+
+PhishGuard follows a **pipeline-based architecture**:
 
 ```
-User Input → Flask Backend → NLP Model
-         ↓
-   URL Analyzer → Domain Check → SSL Check
-         ↓
-     Scoring Engine
-         ↓
-   MySQL Database
-         ↓
-   Live Dashboard (SSE)
+User → Frontend → Flask API → Analysis Pipelines → AI Intelligence → Sandbox → Risk Engine → Database → Dashboard → Alerts
+```
+
+### 🔧 Core Modules:
+
+* Gmail Analyzer
+* Chatbot Analyzer
+* Web Analyzer
+* MCIE (Multi-Channel Intelligence Engine)
+* Sandbox Engine
+* Risk Scoring Engine
+
+---
+
+## ⚙️ Tech Stack
+
+### 🖥️ Frontend
+
+* HTML, CSS, JavaScript
+* Real-time dashboard UI
+
+### 🧠 Backend
+
+* Python (Flask)
+* REST APIs
+
+### 🤖 AI / ML
+
+* NLP models (Transformers / TF-IDF)
+* Heuristic scoring
+* OCR & speech-to-text
+
+### 🔗 Integrations
+
+* Google Gmail API (OAuth)
+* Twilio WhatsApp API
+* WHOIS / Geo lookup APIs
+
+### 🗄️ Database
+
+* SQLite (`phishguard.db`)
+
+---
+
+## 🚀 How It Works
+
+1. User connects Gmail or inputs data
+2. System extracts text, URLs, attachments
+3. AI models analyze content
+4. Suspicious links/files sent to sandbox
+5. Risk score is calculated
+6. Results shown in dashboard
+7. Alerts sent if high risk detected
+
+---
+
+## 📸 Features in Action
+
+* 📊 Real-time threat dashboard
+* 🔍 “View Details” deep analysis
+* 🌐 Safe website preview (sandbox)
+* 📲 WhatsApp phishing alerts
+
+---
+
+## 🔐 Security Measures
+
+* No execution of suspicious files
+* URLs analyzed in sandbox (safe environment)
+* Credentials stored securely using environment variables
+
+---
+
+## 🏆 What Makes This Unique
+
+✔ Multi-channel phishing detection
+✔ Sandbox-based safe simulation
+✔ Explainable AI (not black-box)
+✔ Real-time alerts
+✔ Regional language support
+✔ Detects human-level scams (impersonation)
+
+---
+
+## 📦 Setup Instructions
+
+### 1. Clone Repository
+
+```
+git clone https://github.com/your-username/phishguard.git
+cd phishguard
 ```
 
 ---
 
+### 2. Create Virtual Environment
+
+```
+python -m venv myenv
+source myenv/bin/activate  # Windows: myenv\Scripts\activate
+```
 
 ---
 
-## ⚙️ Installation
+### 3. Install Dependencies
 
-```bash
-git clone https://github.com/your-repo/cortexguard-ai.git
-cd cortexguard-ai
+```
 pip install -r requirements.txt
-python app.py
 ```
 
 ---
 
-## 🌐 Run Locally
 
-Open:
+---
+
+### 5. Run Application
 
 ```
-http://127.0.0.1:5000
+python gmail/app.py
 ```
 
 ---
 
-## 🔮 Future Enhancements
+## 📌 Future Enhancements
 
-* 📱 SMS scam detection
-* 🧠 Personalized risk engine
-* 🌍 Multi-language detection
-* 🧩 Browser extension
-* 🤖 Autonomous AI agent integration
-
----
-
-## 🏆 Unique Selling Points
-
-* Context-aware detection (not just keyword-based)
-* Hybrid AI + rule-based system
-* Explainable AI decisions
-* Multi-channel threat analysis
-* Real-time streaming interface
+* Chrome extension for real-time protection
+* Advanced ML model training
+* Mobile app integration
+* Threat intelligence sharing system
 
 ---
 
+## 👨‍💻 Team
+
+**Team Name:** Cosmic Compilers
+**Hackathon:** Smart India Hackathon
+
+---
+
+## 📄 License
+
+This project is for educational and hackathon purposes.
+
+---
+
+## ⭐ Support
+
+If you like this project, please ⭐ the repository!
