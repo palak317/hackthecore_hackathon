@@ -214,7 +214,7 @@ python gmail/app.py
 
 ## 👨‍💻 Team
 
-**Team Name:** BitsCompilers
+**Team Name:** BitsCompilers,
 **Hackathon:** Hackup 2026
 
 ---
