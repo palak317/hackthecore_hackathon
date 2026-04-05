@@ -214,8 +214,8 @@ python gmail/app.py
 
 ## 👨‍💻 Team
 
-**Team Name:** Cosmic Compilers
-**Hackathon:** Smart India Hackathon
+**Team Name:** BitsCompilers
+**Hackathon:** Hackup 2026
 
 ---
 
